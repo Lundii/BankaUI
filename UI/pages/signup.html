@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta content="width=device-width, initial-scale=1" name="viewport"/>
+        <title>Banka app beta</title>
+        <link rel="stylesheet" type="text/css" href="../css/index.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+    <body class="image2">
+        <div class="container-nav relative bgrd-primary">
+            <div class="container-nav">
+                <div class="row nav-cont">
+                    <div class="col-5 pd-default">
+                        <label class="txt-md col-default logo"><a href="../../index.html"><i class="material-icons">credit_card</i>Banka</a></label>
+                    </div>
+                    <div class="col-6 nav">
+                        <ul> 
+                            <li><a href="../../index.html">Home</a></li>
+                            <li><a>About</a></li>
+                            <li><a>Services</a></li>
+                            <li><a>Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-1 nav">
+                        <ul>
+                            <li onclick="loginSignup('login')"><a class="active">LogIn</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row nav-resp hidden">
+                        <div class="col-10">
+                        <label class="txt-md col-default logo" onclick="toggleMenu()"><i class="material-icons pad">menu</i>Banka</label>
+                        </div>
+                        <div class="col-2">
+                        <label class="txt-md col-default"><a href="./signup.html">LogIn</a></label>
+                        </div>
+                </div>
+            </div>
+            <div class="row nav-resp-vert width-lg absolute hidden">
+                <div class="col-3 card nav-vert">
+                    <ul> 
+                        <li class="shadow"><a href="../../index.html">Home</a></li>
+                        <li class="shadow"><a>About</a></li>
+                        <li class="shadow"><a>Services</a></li>
+                        <li class="shadow"><a>Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row login-main">
+                <div class="col-4 login-pad"></div>
+                <div id="loginSignupCont" class="col-4">
+                    <div class="container">
+                        <div class="panel-sm"></div>
+                        <div class="row login-resp">
+                            <div id="loginCont" class="col-6 pd-default bgrd-default shadow pointer" onclick="loginSignup('login')">
+                                <label class="txt-md"> Login</label>
+                            </div>
+                            <div id="signupCont" class="col-6 pd-default bgrd-default shadow bgrd-gray pointer"  onclick="loginSignup()">
+                                <label class="txt-md"> SignUp</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 login">
+                                <div id="login" class="card-primary">
+                                    <form>
+                                        <div class="form-items-group">
+                                            <input type="text" class="form-item" id="acctNumEmail" placeholder="Enter AcctNum/Email">
+                                        </div>
+                                        <div class="form-items-group">
+                                            <input type="password" class="form-item" id="pwrd" placeholder="Password">
+                                        </div>
+                                        <input type="button" class="btn-default" onclick="displayView()" value="LogIn">
+                                    </form>
+                                    <div class="col-primary pd-default width-lg">
+                                        <p class="txt-ssm undline-pri-hov width-sm">Forgot password?</p>
+                                        <div class="panel-sm"></div>
+                                        <p class="col-danger txt-ssm">Enter USER, ADMIN OR STAFF as the AcctNum/Email
+                                            on the login page to see their respective view, defaults to user view.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div id="signup" class="card-primary hidden">
+                                    <form>
+                                        <div class="form-items-group">
+                                            <input type="text" class="form-item" id="firstName" placeholder="First Name">
+                                        </div>
+                                        <div class="form-items-group">
+                                            <input type="text" class="form-item" id="lastName" placeholder="Last Name">
+                                        </div>
+                                        <div class="form-items-group">
+                                            <input type="email" class="form-item" id="email" placeholder="Enter Email">
+                                        </div>
+                                        <div class="form-items-group">
+                                            <input type="password" class="form-item" id="password" placeholder="Password">
+                                        </div>
+                                        <div class="form-items-group">
+                                            <input type="password" class="form-item" id="confirmPassword" placeholder="Re-enter Password">
+                                        </div>
+                                        <input type="button" class="btn-default" onclick="" value="Sign Up">
+                                    </form>
+                                    <div class="col-primary pd-default width-lg">
+                                        <p class="col-danger txt-ssm">Enter USER, ADMIN OR STAFF as the AcctNum/Email
+                                            on the login page to see their respective view, defaults to user view.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4 login-pad"></div>
+            </div>
+        </div>
+        <script src="../js/index.js"></script>
+    </body>
+</html>

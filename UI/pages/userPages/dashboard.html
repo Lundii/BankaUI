@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta content="width=device-width, initial-scale=1" name="viewport"/>
+        <title>Banka app beta</title>
+        <link rel="stylesheet" type="text/css" href="../../css/index.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+    <body class="image1">
+            <div class="container-nav relative bgrd-primary z-md">
+                <div class="container-nav no-pad">
+                    <div class="row nav-cont dash-nav">
+                        <div class="col-2 pd-default">
+                            <label class="txt-md col-default logo"><a href="./dashboard.html"><i class="material-icons">credit_card</i>Banka</a></label>
+                        </div>
+                        <div class="col-9"></div>
+                        <div class="col-1 nav">
+                            <ul> 
+                                <li><a class="active" href="../../../index.html">Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row nav-resp hidden">
+                        <div class="col-10">
+                            <label class="txt-md col-default logo" onclick="toggleMenu('navVert')"><i class="material-icons pad">menu</i>Banka</label>
+                        </div>
+                        <div class="col-2">
+                            <label class="txt-md col-default"><a href="../../../index.html">Logout</a></label>
+                        </div>
+                    </div>
+                    <div class="row nav-vert-cont absolute hidden">
+                        <div class="col-3 card nav-vert-resp">
+                            <ul> 
+                                <li class="shadow"><a href="./createAccount.html">Create New Account</a></li>
+                                <li class="shadow"><a href="./dashboard.html">Account Summary</a></li>
+                                <li class="shadow"><a href="./transferFunds.html">Transfer fund</a></li>
+                                <li class="shadow"><a href="./buyAirtime.html">Buy Airtime</a></li>
+                                <li class="shadow"><a href="./changePassword.html">Change Password</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-3 card nav-vert nav-dash-cont">
+                    <ul> 
+                        <li class="shadow"><a href="./createAccount.html">Create New Account</a></li>
+                        <li class="shadow"><a href="./dashboard.html">Account Summary</a></li>
+                        <li class="shadow"><a href="./transferFunds.html">Transfer fund</a></li>
+                        <li class="shadow"><a href="./buyAirtime.html">Buy Airtime</a></li>
+                        <li class="shadow"><a href="./changePassword.html">Change Password</a></li>
+                    </ul>
+                </div>
+                <div class="col-1"></div>
+                <div id="accountSummary" class="col-7 main-resp">
+                    <div class="panel-lg">
+                        <div class="container bgrd-gray">
+                            <div class="row">
+                                <div class="col-12 lf-align pd-default bgrd-primary col-default">
+                                    <label>Account Summary</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6 lf-align pd-default col-primary">
+                                    <label></label>
+                                </div>
+                                <div class="col-6 rt-align pd-default col-primary">
+                                    <label></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-primary">
+                        <ul class="ul-no"> 
+                            <li class="shadow bgrd-gray txt-sm" onclick="showAcctHistory()">
+                                <div class="container mg-default">
+                                    <div class="row">
+                                        <div class="col-12 lf-align pd-default bgrd-primary col-default">
+                                            <label>Savings Account</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6 lf-align pd-default col-primary">
+                                            <label>1982904889</label>
+                                        </div>
+                                        <div class="col-6 rt-align pd-default col-primary">
+                                            <label>&#x20A6 23,600.40</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li> 
+                            <li class="shadow bgrd-gray txt-sm" onclick="showAcctHistory()">
+                                <div class="container mg-default">
+                                    <div class="row">
+                                        <div class="col-12 lf-align pd-default bgrd-primary col-default">
+                                            <label>Current Account</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6 pd-default lf-align col-primary">
+                                            <label>2048938356</label>
+                                        </div>
+                                        <div class="col-6 rt-align pd-default col-primary">
+                                            <label>&#x20A6 43,000.97</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="accountHistory" class="col-7 hidden">
+                    <div class="panel-lg">
+                        <div class="container bgrd-gray">
+                            <div class="row">
+                                <div class="col-12 lf-align pd-default bgrd-primary col-default">
+                                    <label>Transaction History</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6 lf-align pd-default col-primary">
+                                    <label>1982904889</label>
+                                </div>
+                                <div class="col-6 rt-align pd-default col-primary">
+                                    <label>&#x20A6 23,600.40</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-primary">
+                        <ul class="ul-no"> 
+                            <li onclick="showModal2('accountHistory')" class="shadow bgrd-gray txt-sm">
+                                <div class="container mg-default">
+                                    <div class="row">
+                                        <div class="col-12 lf-align pd-default bgrd-primary col-default">
+                                            <label>12/6/2019</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6 lf-align pd-default col-primary">
+                                            <label>Credit/Lundii</label>
+                                        </div>
+                                        <div class="col-6 rt-align pd-default col-primary">
+                                            <label>&#x20A6 15,000.00</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li> 
+                            <li onclick="showModal2('accountHistory')" class="shadow bgrd-gray txt-sm">
+                                <div class="container mg-default">
+                                    <div class="row">
+                                        <div class="col-12 lf-align pd-default bgrd-primary col-default">
+                                            <label>12/4/2019</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6 pd-default lf-align col-primary">
+                                            <label>Debit/Withdrawal</label>
+                                        </div>
+                                        <div class="col-6 rt-align pd-default col-danger">
+                                            <label>- &#x20A6 3,000.00</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li> 
+                            <li onclick="showModal2('accountHistory')" class="shadow bgrd-gray txt-sm">
+                                <div class="container mg-default">
+                                    <div class="row">
+                                        <div class="col-12 lf-align pd-default bgrd-primary col-default">
+                                            <label>09/3/2019</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6 lf-align pd-default col-primary">
+                                            <label>Debit/Airtime Recharge/MTN</label>
+                                        </div>
+                                        <div class="col-6 rt-align pd-default col-danger">
+                                            <label>- &#x20A6 500.00</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li> 
+                            <li onclick="showModal2('accountHistory')" class="shadow bgrd-gray txt-sm">
+                                <div class="container mg-default">
+                                    <div class="row">
+                                        <div class="col-12 lf-align pd-default bgrd-primary col-default">
+                                            <label>24/2/2019</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6 pd-default lf-align col-primary">
+                                            <label>Debit/Transfer</label>
+                                        </div>
+                                        <div class="col-6 rt-align pd-default col-danger">
+                                            <label>- &#x20A6 5,000.00</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-1"></div>
+            </div>
+            <div id="modal2" class="container modal hidden">
+                <div class="col-5 pd-default"></div>
+                <div class="col-4">
+                        <div class="container bgrd-gray shadow">
+                            <div class="row">
+                                <div class="col-12 ct-align pd-default bgrd-primary col-default">
+                                    <label id='modalMessage'>Transaction details</label>
+                                </div>
+                            </div>
+                            <div class="row shadow modalRow">
+                                <div onclick="" class="col-6 lf-align pd-default col-primary">
+                                    <label class="col-primary">Amount</label>
+                                </div>
+                                <div onclick="" class="col-6 rt-align pd-default col-primary">
+                                    <label>&#x20A6 15,000.00</label>
+                                </div>
+                            </div>
+                            <div class="row shadow modalRow">
+                                <div onclick="" class="col-6 lf-align pd-default col-primary">
+                                    <label class="col-primary">Trans Date</label>
+                                </div>
+                                <div onclick="" class="col-6 rt-align pd-default col-primary">
+                                    <label>12/04/2019</label>
+                                </div>
+                            </div>
+                            <div class="row shadow modalRow">
+                                <div onclick="" class="col-6 lf-align pd-default col-primary">
+                                    <label class="col-primary">Acct Num</label>
+                                </div>
+                                <div onclick="" class="col-6 rt-align pd-default col-primary">
+                                    <label>100345687903</label>
+                                </div>
+                            </div>
+                            <div class="row shadow modalRow">
+                                <div onclick="" class="col-6 lf-align pd-default col-primary">
+                                    <label class="col-primary">Trans type</label>
+                                </div>
+                                <div onclick="" class="col-6 rt-align pd-default col-primary">
+                                    <label>Credit</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4"></div>
+                                <div onclick="hideModal2('accountHistory')" class="col-4 ct-align pd-default col-danger shadow">
+                                    <label>OK</label>
+                                </div>
+                                <div class="col-4"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3 nav"></div>
+            </div>
+       </div>
+        <script src="../../js/index.js"></script>
+    </body>
+</html>
