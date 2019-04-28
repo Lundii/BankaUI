@@ -64,14 +64,15 @@
                         <div class="row">
                             <div class="col-12 login">
                                 <div id="login" class="card-primary">
-                                    <form>
+                                    <form id="loginForm">
                                         <div class="form-items-group">
-                                            <input type="text" class="form-item" id="acctNumEmail" placeholder="Enter AcctNum/Email">
+                                            <input type="text" class="form-item" id="email" placeholder="Enter Email">
                                         </div>
                                         <div class="form-items-group">
                                             <input type="password" class="form-item" id="pwrd" placeholder="Password">
                                         </div>
-                                        <input type="button" class="btn-default" onclick="displayView()" value="LogIn">
+                                        <!-- <input type="button" class="btn-default" onclick="displayView()" value="LogIn"> -->
+                                        <input type="button" class="btn-default" onclick="signin()" value="LogIn">
                                     </form>
                                     <div class="col-primary pd-default width-lg">
                                         <p class="txt-ssm undline-pri-hov width-sm">Forgot password?</p>
@@ -82,7 +83,7 @@
                                     </div>
                                 </div>
                                 <div id="signup" class="card-primary hidden">
-                                    <form>
+                                    <form id="signupForm">
                                         <div class="form-items-group">
                                             <input type="text" class="form-item" id="firstName" placeholder="First Name">
                                         </div>
@@ -98,7 +99,7 @@
                                         <div class="form-items-group">
                                             <input type="password" class="form-item" id="confirmPassword" placeholder="Re-enter Password">
                                         </div>
-                                        <input type="button" class="btn-default" onclick="" value="Sign Up">
+                                        <input type="button" class="btn-default" onclick="signup()" value="Sign Up">
                                     </form>
                                     <div class="col-primary pd-default width-lg">
                                         <p class="col-danger txt-ssm">Enter USER, ADMIN OR STAFF as the AcctNum/Email
@@ -114,5 +115,6 @@
             </div>
         </div>
         <script src="../js/index.js"></script>
+        <script src="../js/auth.js"></script>
     </body>
 </html>
