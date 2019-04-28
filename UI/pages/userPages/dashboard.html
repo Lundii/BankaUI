@@ -63,51 +63,42 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-6 lf-align pd-default col-primary">
-                                    <label></label>
+                                <div class="col-3 lf-align pd-default col-primary">
+                                    <div class="passport">
+
+                                    </div>
                                 </div>
-                                <div class="col-6 rt-align pd-default col-primary">
-                                    <label></label>
+                                <div class="col-9 rt-align pd-default col-primary">
+                                    <div class="row shadow modalRow">
+                                        <div onclick="" class="col-6 lf-align pd-default col-primary">
+                                            <label class="col-primary">FirstName</label>
+                                        </div>
+                                        <div onclick="" class="col-6 lf-align pd-default col-primary">
+                                            <label id="firstNameLabel">Name</label>
+                                        </div>
+                                    </div>
+                                    <div class="row shadow modalRow">
+                                        <div onclick="" class="col-6 lf-align pd-default col-primary">
+                                            <label class="col-primary">LastName</label>
+                                        </div>
+                                        <div onclick="" class="col-6 lf-align pd-default col-primary">
+                                            <label id="lastNameLabel">Name</label>
+                                        </div>
+                                    </div>
+                                    <div class="row shadow modalRow">
+                                        <div onclick="" class="col-6 lf-align pd-default col-primary">
+                                            <label class="col-primary">Email</label>
+                                        </div>
+                                        <div onclick="" class="col-6 lf-align pd-default col-primary">
+                                            <label id="emailLabel">Email</label>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="card-primary">
-                        <ul class="ul-no"> 
-                            <li class="shadow bgrd-gray txt-sm" onclick="showAcctHistory()">
-                                <div class="container mg-default">
-                                    <div class="row">
-                                        <div class="col-12 lf-align pd-default bgrd-primary col-default">
-                                            <label>Savings Account</label>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-6 lf-align pd-default col-primary">
-                                            <label>1982904889</label>
-                                        </div>
-                                        <div class="col-6 rt-align pd-default col-primary">
-                                            <label>&#x20A6 23,600.40</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li> 
-                            <li class="shadow bgrd-gray txt-sm" onclick="showAcctHistory()">
-                                <div class="container mg-default">
-                                    <div class="row">
-                                        <div class="col-12 lf-align pd-default bgrd-primary col-default">
-                                            <label>Current Account</label>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-6 pd-default lf-align col-primary">
-                                            <label>2048938356</label>
-                                        </div>
-                                        <div class="col-6 rt-align pd-default col-primary">
-                                            <label>&#x20A6 43,000.97</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
+                        <ul id="sumList" class="ul-no"> 
                         </ul>
                     </div>
                 </div>
@@ -121,84 +112,16 @@
                             </div>
                             <div class="row">
                                 <div class="col-6 lf-align pd-default col-primary">
-                                    <label>1982904889</label>
+                                    <label id="transListNum">1982904889</label>
                                 </div>
                                 <div class="col-6 rt-align pd-default col-primary">
-                                    <label>&#x20A6 23,600.40</label>
+                                    <label id="transListBal">&#x20A6 23,600.40</label>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="card-primary">
-                        <ul class="ul-no"> 
-                            <li onclick="showModal2('accountHistory')" class="shadow bgrd-gray txt-sm">
-                                <div class="container mg-default">
-                                    <div class="row">
-                                        <div class="col-12 lf-align pd-default bgrd-primary col-default">
-                                            <label>12/6/2019</label>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-6 lf-align pd-default col-primary">
-                                            <label>Credit/Lundii</label>
-                                        </div>
-                                        <div class="col-6 rt-align pd-default col-primary">
-                                            <label>&#x20A6 15,000.00</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li> 
-                            <li onclick="showModal2('accountHistory')" class="shadow bgrd-gray txt-sm">
-                                <div class="container mg-default">
-                                    <div class="row">
-                                        <div class="col-12 lf-align pd-default bgrd-primary col-default">
-                                            <label>12/4/2019</label>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-6 pd-default lf-align col-primary">
-                                            <label>Debit/Withdrawal</label>
-                                        </div>
-                                        <div class="col-6 rt-align pd-default col-danger">
-                                            <label>- &#x20A6 3,000.00</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li> 
-                            <li onclick="showModal2('accountHistory')" class="shadow bgrd-gray txt-sm">
-                                <div class="container mg-default">
-                                    <div class="row">
-                                        <div class="col-12 lf-align pd-default bgrd-primary col-default">
-                                            <label>09/3/2019</label>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-6 lf-align pd-default col-primary">
-                                            <label>Debit/Airtime Recharge/MTN</label>
-                                        </div>
-                                        <div class="col-6 rt-align pd-default col-danger">
-                                            <label>- &#x20A6 500.00</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li> 
-                            <li onclick="showModal2('accountHistory')" class="shadow bgrd-gray txt-sm">
-                                <div class="container mg-default">
-                                    <div class="row">
-                                        <div class="col-12 lf-align pd-default bgrd-primary col-default">
-                                            <label>24/2/2019</label>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-6 pd-default lf-align col-primary">
-                                            <label>Debit/Transfer</label>
-                                        </div>
-                                        <div class="col-6 rt-align pd-default col-danger">
-                                            <label>- &#x20A6 5,000.00</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
+                        <ul id="transList" class="ul-no"> 
                         </ul>
                     </div>
                 </div>
@@ -218,7 +141,7 @@
                                     <label class="col-primary">Amount</label>
                                 </div>
                                 <div onclick="" class="col-6 rt-align pd-default col-primary">
-                                    <label>&#x20A6 15,000.00</label>
+                                    <label id="transAmount">&#x20A6 15,000.00</label>
                                 </div>
                             </div>
                             <div class="row shadow modalRow">
@@ -226,7 +149,7 @@
                                     <label class="col-primary">Trans Date</label>
                                 </div>
                                 <div onclick="" class="col-6 rt-align pd-default col-primary">
-                                    <label>12/04/2019</label>
+                                    <label id="transDate">12/04/2019</label>
                                 </div>
                             </div>
                             <div class="row shadow modalRow">
@@ -234,7 +157,7 @@
                                     <label class="col-primary">Acct Num</label>
                                 </div>
                                 <div onclick="" class="col-6 rt-align pd-default col-primary">
-                                    <label>100345687903</label>
+                                    <label id="transNum">100345687903</label>
                                 </div>
                             </div>
                             <div class="row shadow modalRow">
@@ -242,7 +165,7 @@
                                     <label class="col-primary">Trans type</label>
                                 </div>
                                 <div onclick="" class="col-6 rt-align pd-default col-primary">
-                                    <label>Credit</label>
+                                    <label id="transType">Credit</label>
                                 </div>
                             </div>
                             <div class="row">
@@ -259,5 +182,6 @@
             </div>
        </div>
         <script src="../../js/index.js"></script>
+        <script src="../../js/user.js"></script>
     </body>
 </html>

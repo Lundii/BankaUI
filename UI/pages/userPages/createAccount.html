@@ -75,7 +75,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div id="login" class="card-primary">
-                                <form>
+                                <form id="createNewAccount">
                                     <div class="form-items-group">
                                         <input type="text" class="form-item" id="acctType" name="firstName" placeholder="FirstName">
                                     </div>
@@ -86,16 +86,13 @@
                                         <input type="email" class="form-item" id="acctName" name="email" placeholder="Email address">
                                     </div>
                                     <div class="form-items-group">
-                                        <input type="number" class="form-item" id="pnoneNumber" name="phoneNumber" placeholder="Phone Number">
-                                    </div>
-                                    <div class="form-items-group">
                                         <select class="form-item" name="type">
                                             <option disabled selected>Account Type</option>
                                             <option value="savings">Savings</option>
                                             <option value="current">Current</option>
                                         </select>
                                     </div>
-                                    <input type="button" class="btn-default" onclick="createAccount()" value="Create Account">
+                                    <input type="button" class="btn-default" onclick="createBankAccount()" value="Create Account">
                                 </form>
                             </div>
                         </div>
@@ -106,5 +103,6 @@
        </div>
         <script src="../../js/index.js"></script>
         <script src="../../js/user.js"></script>
+        <script src="../../js/createBankAccount.js"></script>
     </body>
 </html>

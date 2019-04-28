@@ -18,7 +18,7 @@ let signup = () => {
   fetch(url, fetchData)
   .then((res) => res.json())
   .then(function(data) {
-      console.log(data);
+    localStorage.setItem('user', JSON.stringify(data));
       if (data.status === 200) {
       window.location.href = '../pages/userPages/createNewAccount.html';
       }
@@ -45,10 +45,12 @@ let signin = () => {
   fetch(url, fetchData)
   .then((res) => res.json())
   .then(function(data) {
-      console.log(data);
       if (data.status === 200) {
         localStorage.setItem('user', JSON.stringify(data));
-        window.location.href = '../pages/userPages/createAccount.html';
+        if(data.data.createdanaccount === false)
+          window.location.href = '../pages/userPages/createNewAccount.html';
+        else
+          window.location.href = '../pages/userPages/dashboard.html';
       }
   })
   .catch(function(error) {
