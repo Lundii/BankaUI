@@ -39,7 +39,7 @@ function createNewAdmin() {
 }
 
 function displayView() {
-  const view = document.querySelector('#acctNumEmail').value.toLowerCase();
+  const view = document.querySelector('#email').value.toLowerCase();
   switch (view) {
     case 'user':
       window.location.href = '../pages/userPages/createNewAccount.html';
