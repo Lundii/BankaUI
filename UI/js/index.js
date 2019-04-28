@@ -108,7 +108,11 @@ function hideModal(container){
   document.querySelector(`#${container}`).style.opacity =  "1";
 }
 
-function showModal2(container){
+function showModal2(container, data){
+  document.querySelector('#transAmount').innerHTML = data.amount
+  document.querySelector('#transDate').innerHTML = data.createdon
+  document.querySelector('#transType').innerHTML = data.type
+  document.querySelector('#transNum').innerHTML = `&#x20A6 ${data.accountnumber}`
   document.querySelector("#modal2").style.display =  "block";
   document.querySelector(`#${container}`).style.pointerEvents =  "none";
   document.querySelector(`#${container}`).style.filter = "blur(1px)"; 
