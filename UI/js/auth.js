@@ -1,5 +1,5 @@
 let signup = () => {
-  const url = 'http://localhost:3000/api/v1/auth/signup'
+  const url = 'https://mighty-retreat-71326.herokuapp.com/api/v1/auth/signup'
   const form = document.querySelector('#signupForm').elements;
   const data = {
     firstName: form[0].value,
@@ -29,7 +29,7 @@ let signup = () => {
 }
 
 let signin = () => {
-  const url = 'http://localhost:3000/api/v1/auth/signin'
+  const url = 'https://mighty-retreat-71326.herokuapp.com/api/v1/auth/signin'
   const form = document.querySelector('#loginForm').elements;
   const data = {
     email: form[0].value,
@@ -47,10 +47,22 @@ let signin = () => {
   .then(function(data) {
       if (data.status === 200) {
         localStorage.setItem('user', JSON.stringify(data));
-        if(data.data.createdanaccount === false)
-          window.location.href = '../pages/userPages/createNewAccount.html';
-        else
-          window.location.href = '../pages/userPages/dashboard.html';
+        switch (data.data.type) {
+          case 'client' :
+            if(data.data.createdanaccount === false)
+              window.location.href = '../pages/userPages/createNewAccount.html';
+            else
+              window.location.href = '../pages/userPages/dashboard.html';
+            break;
+
+          case 'staff' :
+            if (data.data.isadmin ===  true) {
+              window.location.href = '../pages/adminPages/manageUsers.html';
+            }
+            else 
+              window.location.href = '../pages/Staff(Cashier) pages/manageUsers.html';
+            break;
+        }
       }
   })
   .catch(function(error) {

@@ -73,20 +73,20 @@
                     <div class="row">
                         <div class="col-12">
                             <div id="login" class="card-primary">
-                                <form>
+                                <form id="creditForm">
                                     <div class="form-items-group">
-                                        <input type="number" class="form-item" id="acctNum" name="acctNum" placeholder="Account Number">
+                                        <input type="number" onchange="getAccountDetails()" class="form-item" id="creacctNum" name="acctNum" placeholder="Account Number">
                                     </div>
                                     <div class="form-items-group">
-                                        <input type="text" class="form-item" id="acctName" name="acctName" placeholder="Account Name">
+                                        <input type="text" class="form-item" id="creacctName" name="acctName" placeholder="Account Name">
                                     </div>
                                     <div class="form-items-group">
-                                        <input type="text" class="form-item" id="bal" name="bal" value="Bal: &#x20A6 123,000.00">
+                                        <input type="text" class="form-item" id="crebal" name="bal" value="Bal:Account Balance">
                                     </div>
                                     <div class="form-items-group">
-                                        <input type="number" class="form-item" id="bal" name="bal" placeholder="Credit Amount">
+                                        <input type="number" class="form-item" id="crebal" name="bal" placeholder="Credit Amount">
                                     </div>
-                                    <input type="button" class="btn-default" onclick="" value="Credit Account">
+                                    <input type="button" id="creditButton" class="btn-default" onclick="creditAccount()" value="Credit Account">
                                 </form>
                             </div>
                         </div>
@@ -96,5 +96,6 @@
             </div>
        </div>
         <script src="../../js/index.js"></script>
+        <script src="../../js/credit.js"></script>
     </body>
 </html>
