@@ -70,3 +70,7 @@ let signin = () => {
   })
 }
 
+let passwordreset = ()=>  {
+  window.location.href = `https://mighty-retreat-71326.herokuapp.com/api/v1/passwordreset`;
+}
+
