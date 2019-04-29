@@ -73,20 +73,20 @@
                     <div class="row">
                         <div class="col-12">
                             <div id="login" class="card-primary">
-                                <form>
+                                <form id="debitForm">
                                     <div class="form-items-group">
-                                        <input type="number" class="form-item" id="acctNum" name="acctNum" placeholder="Account Number">
+                                        <input type="number" onchange="getAccountDetails()" class="form-item" id="acctNum" name="acctNum" placeholder="Account Number">
                                     </div>
                                     <div class="form-items-group">
                                         <input type="text" class="form-item" id="acctName" name="acctName" placeholder="Account Name">
                                     </div>
                                     <div class="form-items-group">
-                                        <input type="text" class="form-item" id="bal" name="bal" value="Bal: &#x20A6 123,000.00">
+                                        <input type="text" class="form-item" id="bal" name="bal" value="Account Balance">
                                     </div>
                                     <div class="form-items-group">
                                         <input type="number" class="form-item" id="bal" name="bal" placeholder="Debit Amount">
                                     </div>
-                                    <input type="button" class="btn-default" onclick="" value="Debit Account">
+                                    <input type="button" id="debitButton" class="btn-default" onclick="debitAccount()" value="Debit Account">
                                 </form>
                             </div>
                         </div>
@@ -96,5 +96,6 @@
             </div>
        </div>
         <script src="../../js/index.js"></script>
+        <script src="../../js/debit.js"></script>
     </body>
 </html>
