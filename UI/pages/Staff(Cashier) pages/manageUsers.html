@@ -71,107 +71,7 @@
                         </div>
                     </div>
                     <div id="acctHistory" class="card-primary">
-                        <ul id="acctList" class="ul-no"> 
-                            <!-- <li onclick="showUserDetails()" class="shadow bgrd-gray txt-sm">
-                                <div class="container mg-default">
-                                    <div class="row">
-                                        <div class="col-10 lf-align pd-default bgrd-primary col-default">
-                                            <label>Adamu Rufayat Atinuke</label>
-                                        </div>
-                                        <div class="col-2 rt-align pd-default bgrd-primary col-default" onclick="showDrowndown(event, 'dropdown')">
-                                            <div class="dropdown">
-                                                    <i class="material-icons lg">more_vert</i>
-                                                <div id="dropdown" class="dropdown-content">
-                                                    <label onclick="showModal('manageUsers', 'delete')">Delete</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-6 lf-align pd-default col-primary">
-                                            <label>2093483785</label>
-                                        </div>
-                                        <div class="col-6 rt-align pd-default col-primary">
-                                            <label>&#x20A6 45,000.00</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li> 
-                            <li onclick="showUserDetails()" class="shadow bgrd-gray txt-sm">
-                                <div class="container mg-default">
-                                    <div class="row">
-                                        <div class="col-10 lf-align pd-default bgrd-primary col-default">
-                                            <label>Audu John Eche</label>
-                                        </div>
-                                        <div class="col-2 rt-align pd-default bgrd-primary col-default" onclick="showDrowndown(event, 'dropdown1')">
-                                            <div class="dropdown">
-                                                    <i class="material-icons lg">more_vert</i>
-                                                <div id="dropdown1" class="dropdown-content">
-                                                    <label onclick="showModal('manageUsers', 'delete')">Delete</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-6 pd-default lf-align col-primary">
-                                            <label>2919309898</label>
-                                        </div>
-                                        <div class="col-6 rt-align pd-default col-primary">
-                                            <label>&#x20A6 1,235,000.00</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li> 
-                            <li onclick="showUserDetails()" class="shadow bgrd-gray txt-sm">
-                                <div class="container mg-default">
-                                    <div class="row">
-                                        <div class="col-10 lf-align pd-default bgrd-primary col-default">
-                                            <label>Peter Tunde Abiodun</label>
-                                        </div>
-                                        <div class="col-2 rt-align pd-default bgrd-primary col-default" onclick="showDrowndown(event, 'dropdown2')">
-                                            <div class="dropdown">
-                                                    <i class="material-icons lg">more_vert</i>
-                                                <div id="dropdown2" class="dropdown-content">
-                                                    <label onclick="showModal('manageUsers', 'delete')">Delete</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-6 lf-align pd-default col-primary">
-                                            <label>3094834890</label>
-                                        </div>
-                                        <div class="col-6 rt-align pd-default col-primary">
-                                            <label>&#x20A6 27,500.00</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li> 
-                            <li onclick="showUserDetails()" class="shadow bgrd-gray txt-sm">
-                                <div class="container mg-default">
-                                    <div class="row">
-                                        <div class="col-10 lf-align pd-default bgrd-primary col-default">
-                                            <label>Nwachukwu Vincent </label>
-                                        </div>
-                                        <div class="col-2 rt-align pd-default bgrd-primary col-default" onclick="showDrowndown(event, 'dropdown3')">
-                                            <div class="dropdown">
-                                                    <i class="material-icons lg">more_vert</i>
-                                                <div id="dropdown3" class="dropdown-content">
-                                                    <label onclick="showModal('manageUsers', 'delete')">Delete</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-6 pd-default lf-align col-primary">
-                                            <label>3897627873</label>
-                                        </div>
-                                        <div class="col-6 rt-align pd-default col-primary">
-                                            <label>&#x20A6 835,000.00</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li> -->
+                        <ul id="acctList" class="ul-no">
                         </ul>
                     </div>
                 </div>
@@ -183,12 +83,12 @@
                                     <label>Onu Monday Emmanuel</label>
                                 </div>
                                 <div class="col-3 rt-align pd-default bgrd-primary col-default">
-                                    <label>2012345676</label>
+                                    <label id="headAcctNum">2012345676</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-6 lf-align pd-default col-primary shadow pointer tranHis">
-                                    <label class="pointer"><a href="./transactionHistory.html">TRANSACTION HISTORY</a></label>
+                                    <label onclick="transactionDetails()" class="pointer"><a href="./transactionHistory.html">TRANSACTION HISTORY</a></label>
                                 </div>
                                 <div class="col-6"></div>
                             </div>
@@ -198,23 +98,23 @@
                         <form> 
                             <div class="form-items-group txt-sm">
                                 <label for="firstName">First Name</label>
-                                <input type="text" class="form-item" name="firstName" id="firstName" placeholder="FirstName" value="Ezinne">
+                                <input id="userFirstName" type="text" class="form-item" name="firstName" id="firstName" placeholder="FirstName" disabled value="Ezinne">
                             </div>
                             <div class="form-items-group txt-sm">
                                 <label for="lastName">Last Name</label>
-                                <input type="text" class="form-item" name="lastName" id="lastName" placeholder="LastName" value="Peter">
+                                <input id="userLastName" type="text" class="form-item" name="lastName" id="lastName" placeholder="LastName" disabled value="Peter">
                             </div>
                             <div class="form-items-group">
                                 <label for="acctNum">Account Number</label>
-                                <input type="number" class="form-item" name="acctNum" id="acctNum" placeholder="Account Number" value="1009284578">
+                                <input id="userAcctNum" type="number" class="form-item" name="acctNum" id="acctNum" placeholder="Account Number" disabled value="1009284578">
                             </div>
                             <div class="form-items-group">
                                 <label for="emailAddr">Email Address</label>
-                                <input type="email" class="form-item" name="emailAddr" id="emailAddr" placeholder="Email Address" value="address@email.com">
+                                <input id="userEmail" type="email" class="form-item" name="emailAddr" id="emailAddr" placeholder="Email Address" disabled value="address@email.com">
                             </div>
                             <div class="form-items-group">
                                 <label for="phoneNumber">Phone Number</label>
-                                <input type="number" class="form-item" name="phoneNumber" id="phoneNumber" placeholder="Phone Number">
+                                <input id="userPhNum" type="number" class="form-item" name="phoneNumber" id="phoneNumber" disabled placeholder="Phone Number">
                             </div>
                             <input type="button" class="btn-default" onclick="location.href='./userPages/dashboard.html';" value="Update">
                         </form>
@@ -232,10 +132,10 @@
                                 </div>
                             </div>
                             <div class="row modalRow">
-                                <div onclick="hideModal('manageUsers')" class="col-6 lf-align pd-default col-primary shadow">
+                                <div onclick="hideModal('manageUsers', 'YES')" class="col-6 lf-align pd-default col-primary shadow">
                                     <label class="col-primary">YES</label>
                                 </div>
-                                <div onclick="hideModal('manageUsers')" class="col-6 rt-align pd-default col-danger shadow">
+                                <div onclick="hideModal('manageUsers', 'NO')" class="col-6 rt-align pd-default col-danger shadow">
                                     <label>NO</label>
                                 </div>
                             </div>

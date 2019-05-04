@@ -18,7 +18,7 @@ let signup = () => {
   fetch(url, fetchData)
   .then((res) => res.json())
   .then(function(data) {
-    localStorage.setItem('user', JSON.stringify(data));
+    localStorage.setItem('clientUser', JSON.stringify(data));
       if (data.status === 200) {
       window.location.href = '../pages/userPages/createNewAccount.html';
       }
@@ -46,7 +46,18 @@ let signin = () => {
   .then((res) => res.json())
   .then(function(data) {
       if (data.status === 200) {
-        localStorage.setItem('user', JSON.stringify(data));
+        switch (data.data.type) {
+          case 'client': {
+            localStorage.setItem('ClientUser', JSON.stringify(data));
+            break;
+          }
+          case 'staff': {
+            if (data.data.isAdmin)
+              localStorage.setItem('AdminUser', JSON.stringify(data));
+            else 
+              localStorage.setItem('StaffUser', JSON.stringify(data));
+          }
+        }
         switch (data.data.type) {
           case 'client' :
             if(data.data.createdanaccount === false)
@@ -56,7 +67,7 @@ let signin = () => {
             break;
 
           case 'staff' :
-            if (data.data.isadmin ===  true) {
+            if (data.data.isadmin) {
               window.location.href = '../pages/adminPages/manageUsers.html';
             }
             else 
