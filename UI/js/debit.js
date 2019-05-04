@@ -7,7 +7,7 @@ let disable = () => {
 
 
 let getAccountDetails = ()=>  {
-    const user = JSON.parse(localStorage.getItem('user'));
+    const user = JSON.parse(localStorage.getItem('StaffUser'));
     const form = document.querySelector('#debitForm').elements;
     const fetchData2 = {
       method: 'GET',
@@ -34,7 +34,7 @@ let getAccountDetails = ()=>  {
   }
 
   let debitAccount = () => {
-    const user = JSON.parse(localStorage.getItem('user'));
+    const user = JSON.parse(localStorage.getItem('StaffUser'));
     const form = document.querySelector('#debitForm').elements;
     const data = {
       debitAmount: form[3].value,

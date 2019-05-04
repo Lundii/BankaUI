@@ -1,6 +1,6 @@
 const populate = () => {
     const form = document.querySelector('#createNewAccount').elements;
-    const user = JSON.parse(localStorage.getItem('user'));
+    const user = JSON.parse(localStorage.getItem('ClientUser'));
 
     form[0].value = user.data.firstName;
     form[1].value = user.data.lastName;
@@ -11,7 +11,7 @@ const populate = () => {
 }
 
 const createBankAccount = () => {
-  const user = JSON.parse(localStorage.getItem('user'));
+  const user = JSON.parse(localStorage.getItem('ClientUser'));
   const url = `https://mighty-retreat-71326.herokuapp.com/api/v1/user/${user.data.id}/accounts`;
   const form = document.querySelector('#createNewAccount').elements;
   const data = {
