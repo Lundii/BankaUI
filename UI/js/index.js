@@ -22,9 +22,15 @@ function showStaffDetails() {
   document.querySelector('#staffDetails').style.display = 'block';
 }
 
-function showUserDetails() {
+function showUserDetails(account) {
   document.querySelector('#manageUsers').style.display = 'none';
   document.querySelector('#userDetails').style.display = 'block';
+  document.querySelector('#userFirstName').value = account.firstname;
+  document.querySelector('#userLastName').value = account.lastname;
+  document.querySelector('#userAcctNum').value = account.accountnumber;
+  document.querySelector('#headAcctNum').innerHTML = account.accountnumber;
+  document.querySelector('#userEmail').value = account.owneremail;
+  localStorage.setItem('accountNumberDetails', account.accountnumber);
 }
 
 function showAdminDetails() {
@@ -36,24 +42,6 @@ function createNewAdmin() {
   document.querySelector('#manageAdmins').style.display = 'none';
   document.querySelector('#adminDetails').style.display = 'block';
   document.querySelector('#createNewAdmin').style.display = 'block';
-}
-
-function displayView() {
-  const view = document.querySelector('#email').value.toLowerCase();
-  switch (view) {
-    case 'user':
-      window.location.href = '../pages/userPages/createNewAccount.html';
-      break;
-    case 'admin':
-      window.location.href = '../pages/adminPages/manageUsers.html';
-      break;
-    case 'staff':
-      window.location.href = '../pages/Staff(Cashier) pages/manageUsers.html';
-      break;
-    default:
-      window.location.href = '../pages/userPages/createNewAccount.html';
-      break;
-  }
 }
 
 window.addEventListener('resize', getWidth);
@@ -95,17 +83,28 @@ function showDrowndown(event, id) {
   event.stopPropagation();
 }
 
-function showModal(container, message){
+function showModal(container, message, account){
   document.querySelector("#modal").style.display =  "block";
   document.querySelector('#modalMessage').innerHTML =  `Are you sure you want to ${message} this account`;
   document.querySelector(`#${container}`).style.pointerEvents =  "none";
   document.querySelector(`#${container}`).style.filter = "blur(1px)"; 
+  localStorage.setItem('accountNumberDetails', account.accountnumber);
 }
-function hideModal(container){
-  document.querySelector("#modal").style.display =  "none";
-  document.querySelector(`#${container}`).style.filter = "blur(0px)"; 
-  document.querySelector(`#${container}`).style.pointerEvents =  "all";
-  document.querySelector(`#${container}`).style.opacity =  "1";
+function hideModal(container, action){
+  if (action === 'YES' ) {
+    deleteAccountNumber(localStorage.getItem('accountNumberDetails'), () => {
+      // document.querySelector("#modal").style.display =  "none";
+      // document.querySelector(`#${container}`).style.filter = "blur(0px)"; 
+      // document.querySelector(`#${container}`).style.pointerEvents =  "all";
+      // document.querySelector(`#${container}`).style.opacity =  "1";
+    });
+  }
+  else {
+    document.querySelector("#modal").style.display =  "none";
+    document.querySelector(`#${container}`).style.filter = "blur(0px)"; 
+    document.querySelector(`#${container}`).style.pointerEvents =  "all";
+    document.querySelector(`#${container}`).style.opacity =  "1";
+  }
 }
 
 function showModal2(container, data){

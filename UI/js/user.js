@@ -1,5 +1,5 @@
 const createSummary = () => {
-  const user = JSON.parse(localStorage.getItem('user'));
+  const user = JSON.parse(localStorage.getItem('ClientUser'));
   const fetchData2 = {
     method: 'GET',
     headers: {
@@ -65,7 +65,7 @@ fetch(url2, fetchData2)
 }
 
 const transactionDetails = (accountNumber) => {
-  const user = JSON.parse(localStorage.getItem('user'));
+  const user = JSON.parse(localStorage.getItem('ClientUser'));
   const fetchData2 = {
     method: 'GET',
     headers: {
