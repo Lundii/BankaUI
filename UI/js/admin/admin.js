@@ -1,5 +1,5 @@
 const getAccounts = () => {
-    const user = JSON.parse(localStorage.getItem('StaffUser'));
+    const user = JSON.parse(localStorage.getItem('AdminUser'));
     const fetchData2 = {
       method: 'GET',
       headers: {
@@ -7,7 +7,7 @@ const getAccounts = () => {
         "Authorization": `Bearer ${user.data.token}`
       },
     }
-  const url2 = `https://mighty-retreat-71326.herokuapp.com/api/v1/staff/${user.data.id}/accounts`;
+  const url2 = `http://localhost:3000/api/v1/admin/${user.data.id}/accounts`;
   fetch(url2, fetchData2)
   .then((res) => res.json())
   .then(function(data) {
@@ -75,7 +75,7 @@ const getAccounts = () => {
 }
 
 const deleteAccountNumber = (accountNumber, callback) => {
-  const user = JSON.parse(localStorage.getItem('StaffUser'));
+  const user = JSON.parse(localStorage.getItem('AdminUser'));
   const fetchData2 = {
     method: 'DELETE',
     headers: {
@@ -83,7 +83,7 @@ const deleteAccountNumber = (accountNumber, callback) => {
       "Authorization": `Bearer ${user.data.token}`
     },
   }
-const url2 = `https://mighty-retreat-71326.herokuapp.com/api/v1/staff/${user.data.id}/accounts/${accountNumber}`;
+const url2 = `http://localhost:3000/api/v1/admin/${user.data.id}/accounts/${accountNumber}`;
 fetch(url2, fetchData2)
 .then((res) => res.json())
 .then(function(data) {

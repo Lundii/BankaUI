@@ -1,14 +1,14 @@
 let disable = () => {
-    const form = document.querySelector('#creditForm').elements;
+    const form = document.querySelector('#debitForm').elements;
     form[1].disabled = true;
     form[2].disabled = true;
-    document.querySelector('#creditButton').disabled = true;
+    document.querySelector('#debitButton').disabled = true;
 }
 
 
 let getAccountDetails = ()=>  {
     const user = JSON.parse(localStorage.getItem('StaffUser'));
-    const form = document.querySelector('#creditForm').elements;
+    const form = document.querySelector('#debitForm').elements;
     const fetchData2 = {
       method: 'GET',
       headers: {
@@ -17,7 +17,7 @@ let getAccountDetails = ()=>  {
       },
     }
     console.log(form[0].value);
-    const url2 = `https://mighty-retreat-71326.herokuapp.com/api/v1/staff/${user.data.id}/accounts/${form[0].value}`;
+    const url2 = `http://localhost:3000/api/v1/staff/${user.data.id}/accounts/${form[0].value}`;
     fetch(url2, fetchData2)
     .then((res) => res.json())
     .then(function(data) {
@@ -25,7 +25,7 @@ let getAccountDetails = ()=>  {
           console.log(data);
          form[1].value = `${data.data[0].firstname} ${data.data[0].lastname}`;
          form[2].value = `${data.data[0].balance}`;
-         document.querySelector('#creditButton').disabled = false;
+         document.querySelector('#debitButton').disabled = false;
       }
     })
     .catch(function(error) {
@@ -33,11 +33,11 @@ let getAccountDetails = ()=>  {
     })
   }
 
-  let creditAccount = () => {
+  let debitAccount = () => {
     const user = JSON.parse(localStorage.getItem('StaffUser'));
-    const form = document.querySelector('#creditForm').elements;
+    const form = document.querySelector('#debitForm').elements;
     const data = {
-      creditAmount: form[3].value,
+      debitAmount: form[3].value,
     };
     const fetchData2 = {
       method: 'POST',
@@ -48,7 +48,7 @@ let getAccountDetails = ()=>  {
       },
     }
     console.log(form[0].value);
-    const url2 = `https://mighty-retreat-71326.herokuapp.com/api/v1/staff/${user.data.id}/transactions/${form[0].value}/credit`;
+    const url2 = `http://localhost:3000/api/v1/staff/${user.data.id}/transactions/${form[0].value}/debit`;
     fetch(url2, fetchData2)
     .then((res) => res.json())
     .then(function(data) {
