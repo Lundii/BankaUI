@@ -74,26 +74,27 @@ const getAccounts = () => {
   })
 }
 
-const deleteAccountNumber = (accountNumber, callback) => {
-  const user = JSON.parse(localStorage.getItem('AdminUser'));
-  const fetchData2 = {
-    method: 'DELETE',
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${user.data.token}`
-    },
-  }
-const url2 = `http://localhost:3000/api/v1/admin/${user.data.id}/accounts/${accountNumber}`;
-fetch(url2, fetchData2)
-.then((res) => res.json())
-.then(function(data) {
-  if (data.status === 200 ) {
-    document.location.reload(); 
-    callback();
-  }
-})
-.catch(function(error) {
-  console.log(error)
-})
-}
+// const deleteAccountNumber = (accountNumber, callback) => {
+//   const user = JSON.parse(localStorage.getItem('AdminUser'));
+//   const fetchData2 = {
+//     method: 'DELETE',
+//     headers: {
+//       "Content-Type": "application/json",
+//       "Authorization": `Bearer ${user.data.token}`
+//     },
+//   }
+// const url2 = `http://localhost:3000/api/v1/admin/${user.data.id}/accounts/${accountNumber}`;
+// fetch(url2, fetchData2)
+// .then((res) => res.json())
+// .then(function(data) {
+//   if (data.status === 200 ) {
+//     document.location.reload(); 
+//     callback();
+//   }
+// })
+// .catch(function(error) {
+//   console.log(error)
+// })
+// }
+
 window.onload = getAccounts();
