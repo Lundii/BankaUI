@@ -1,7 +1,6 @@
 const transactionDetails = () => {
-    const user = JSON.parse(localStorage.getItem('StaffUser'));
+    const user = JSON.parse(localStorage.getItem('AdminUser'));
     const accountNumber = localStorage.getItem('accountNumberDetails');
-    console.log(accountNumber)
     const fetchData2 = {
       method: 'GET',
       headers: {
@@ -9,13 +8,13 @@ const transactionDetails = () => {
         "Authorization": `Bearer ${user.data.token}`
       },
     }
-  const url2 = `https://mighty-retreat-71326.herokuapp.com/api/v1/staff/${user.data.id}/accounts/${accountNumber}/transactions`;
+  const url2 = `http://localhost:3000/api/v1/admin/${user.data.id}/accounts/${accountNumber}/transactions`;
   fetch(url2, fetchData2)
   .then((res) => res.json())
   .then(function(data) {
     if (data.status === 200  ) {
-      localStorage.setItem('transactionHistory', JSON.stringify(data));
-      const transactionHistory = JSON.parse(localStorage.getItem('transactionHistory'));
+      localStorage.setItem('transactionHistoryAdmin', JSON.stringify(data));
+      const transactionHistory = JSON.parse(localStorage.getItem('transactionHistoryAdmin'));
       if (transactionHistory.data) {
         transactionHistory.data.forEach((account) => {
           const li = document.createElement('li');

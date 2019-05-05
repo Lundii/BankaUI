@@ -65,17 +65,17 @@
                             </div>
                             <div class="row">
                                 <div class="col-6 lf-align pd-default col-primary">
-                                    <label>1982904889</label>
+                                    <label  id="transListNum">1982904889</label>
                                 </div>
                                 <div class="col-6 rt-align pd-default col-primary">
-                                    <label>&#x20A6 23,600.40</label>
+                                    <label id="transListBal">&#x20A6 23,600.40</label>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div id="acctHistory" class="card-primary">
-                        <ul class="ul-no"> 
-                            <li onclick="showModal2('transactionHistory')" class="shadow bgrd-gray txt-sm">
+                        <ul id="transHistList" class="ul-no"> 
+                            <!-- <li onclick="showModal2('transactionHistory')" class="shadow bgrd-gray txt-sm">
                                 <div class="container mg-default">
                                     <div class="row">
                                         <div class="col-12 lf-align pd-default bgrd-primary col-default">
@@ -142,7 +142,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </li>
+                            </li> -->
                         </ul>
                     </div>
                 </div>
@@ -162,7 +162,7 @@
                                     <label class="col-primary">Amount</label>
                                 </div>
                                 <div onclick="" class="col-6 rt-align pd-default col-primary">
-                                    <label>&#x20A6 15,000.00</label>
+                                    <label id="transAmount">&#x20A6 15,000.00</label>
                                 </div>
                             </div>
                             <div class="row shadow modalRow">
@@ -170,7 +170,7 @@
                                     <label class="col-primary">Trans Date</label>
                                 </div>
                                 <div onclick="" class="col-6 rt-align pd-default col-primary">
-                                    <label>12/04/2019</label>
+                                    <label id="transDate">12/04/2019</label>
                                 </div>
                             </div>
                             <div class="row shadow modalRow">
@@ -178,7 +178,7 @@
                                     <label class="col-primary">Acct Num</label>
                                 </div>
                                 <div onclick="" class="col-6 rt-align pd-default col-primary">
-                                    <label>100345687903</label>
+                                    <label id="transNum">100345687903</label>
                                 </div>
                             </div>
                             <div class="row shadow modalRow">
@@ -186,7 +186,7 @@
                                     <label class="col-primary">Trans type</label>
                                 </div>
                                 <div onclick="" class="col-6 rt-align pd-default col-primary">
-                                    <label>Credit</label>
+                                    <label id="transType">Credit</label>
                                 </div>
                             </div>
                             <div class="row">
@@ -203,5 +203,6 @@
             </div>
        </div>
         <script src="../../js/index.js"></script>
+        <script src="../../js/admin/transHistAdmin.js"></script>
     </body>
 </html>

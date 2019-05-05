@@ -74,85 +74,7 @@
                         </div>
                     </div>
                     <div class="card-primary">
-                        <ul class="ul-no"> 
-                            <li id="staff" onclick="showStaffDetails()" class="shadow bgrd-gray txt-sm" >
-                                <div class="container mg-default">
-                                    <div class="row">
-                                        <div class="col-10 lf-align pd-default bgrd-primary col-default">
-                                            <label>Simon Esther Abiodun</label>
-                                        </div>
-                                        <div class="col-2 rt-align pd-default bgrd-primary col-default" onclick="showDrowndown(event, 'dropdown')">
-                                            <div class="dropdown">
-                                                    <i class="material-icons lg">more_vert</i>
-                                                <div id="dropdown" class="dropdown-content">
-                                                    <label onclick="showModal('manageStaffs', 'delete')">Delete</label>
-                                                    <label onclick="showModal('manageStaffs', 'deactivate')">Deactivate</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-6 lf-align pd-default col-primary">
-                                            <label>Cashier</label>
-                                        </div>
-                                        <div class="col-6 rt-align pd-default col-primary">
-                                            <label>Staff ID: 1001235</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li> 
-                            <li id="staff" onclick="showStaffDetails()" class="shadow bgrd-gray txt-sm">
-                                <div class="container mg-default">
-                                    <div class="row">
-                                        <div class="col-10 lf-align pd-default bgrd-primary col-default">
-                                            <label>Nnaji Ngozi </label>
-                                        </div>
-                                        <div class="col-2 rt-align pd-default bgrd-primary col-default" onclick="showDrowndown(event, 'dropdown2')">
-                                            <div class="dropdown">
-                                                    <i class="material-icons lg">more_vert</i>
-                                                <div id="dropdown2" class="dropdown-content">
-                                                    <label onclick="showModal('manageStaffs', 'delete')">Delete</label>
-                                                    <label onclick="showModal('manageStaffs', 'deactivate')">Deactivate</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-6 pd-default lf-align col-primary">
-                                            <label>Cashier</label>
-                                        </div>
-                                        <div class="col-6 rt-align pd-default col-primary">
-                                            <label>Staff ID: 1003425</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li> 
-                            <li id="staff" onclick="showStaffDetails()" class="shadow bgrd-gray txt-sm">
-                                <div class="container mg-default">
-                                    <div class="row">
-                                        <div class="col-10 lf-align pd-default bgrd-primary col-default">
-                                            <label>Hamzat Kehinde Ibrahim</label>
-                                        </div>
-                                        <div class="col-2 rt-align pd-default bgrd-primary col-default" onclick="showDrowndown(event, 'dropdown3')">
-                                            <div class="dropdown">
-                                                    <i class="material-icons lg">more_vert</i>
-                                                <div id="dropdown3" class="dropdown-content">
-                                                    <label onclick="showModal('manageStaffs', 'delete')">Delete</label>
-                                                    <label onclick="showModal('manageStaffs', 'deactivate')">Deactivate</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-6 lf-align pd-default col-primary">
-                                            <label>Customer Care</label>
-                                        </div>
-                                        <div class="col-6 rt-align pd-default col-primary">
-                                            <label>Staff ID: 1005786</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li> 
+                        <ul id="staffList" class="ul-no"> 
                         </ul>
                     </div>
                 </div>
@@ -160,11 +82,11 @@
                     <div class="panel-lg">
                         <div class="container bgrd-gray">
                             <div class="row">
-                                <div class="col-9 lf-align pd-default bgrd-primary col-default">
-                                    <label>Nnaji Ngozi </label>
+                                <div class="col-6 lf-align pd-default bgrd-primary col-default">
+                                    <label id="staffNameHead">Nnaji Ngozi </label>
                                 </div>
-                                <div class="col-3 rt-align pd-default bgrd-primary col-default">
-                                    <label>Staff ID: 1003425</label>
+                                <div class="col-6 rt-align pd-default bgrd-primary col-default">
+                                    <label id="staffIDHead">Staff ID: 1003425</label>
                                 </div>
                             </div>
                             <div class="row">
@@ -177,22 +99,26 @@
                     <div class="card-primary">
                         <form> 
                             <div class="form-items-group txt-sm">
-                                <label for="firstName">Full Name</label>
-                                <input type="text" class="form-item" name="firstName" id="firstName" placeholder="Email Name">
+                                <label for="firstName">FirstName</label>
+                                <input id="staffFirstName" type="text" class="form-item" name="firstName" disabled placeholder="Email Name">
                             </div>
                             <div class="form-items-group txt-sm">
-                                <label for="lastName">Full Name</label>
-                                <input type="text" class="form-item" name="lastName" id="lastName" placeholder="Last Name">
+                                <label for="lastName">LastName</label>
+                                <input id="staffLastName" type="text" class="form-item" name="lastName" disabled placeholder="Last Name">
                             </div>
                             <div class="form-items-group txt-sm">
                                 <label for="email">Email</label>
-                                <input type="email" class="form-item" name="email" id="email" placeholder="Email">
+                                <input id="staffEmail" type="email" class="form-item" name="email" disabled placeholder="Email">
+                            </div>
+                            <div class="form-items-group txt-sm">
+                                <label for="id">Staff ID</label>
+                                <input id="staffID" type="number" class="form-item" name="id" disabled placeholder="Email">
                             </div>
                             <div class="form-items-group">
                                 <label for="jobRole">Job Role</label>
-                                <input type="text" class="form-item" name="jobrole" id="jobrole" placeholder="Job Role" value="Staff(Cashier)" disabled>
+                                <input id="staffRole" type="text" class="form-item" name="jobrole" placeholder="Job Role" value="Staff(Cashier)" disabled>
                             </div>
-                            <input type="button" class="btn-default" value="Update">
+                            <input id="staffButton" type="button" onclick=edit_updateStaffDetails() class="btn-default" value="Edit">
                         </form>
                     </div>
                 </div>
@@ -222,5 +148,6 @@
             </div>
        </div>
         <script src="../../js/index.js"></script>
+        <script src="../../js/admin//getstaffs.js"></script>
     </body>
 </html>
