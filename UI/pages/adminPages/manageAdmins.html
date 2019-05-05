@@ -74,33 +74,7 @@
                         </div>
                     </div>
                     <div id="acctHistory" class="card-primary">
-                        <ul class="ul-no"> 
-                            <li onclick="showAdminDetails()" class="shadow bgrd-gray txt-sm">
-                                <div class="container mg-default">
-                                    <div class="row">
-                                        <div class="col-10 lf-align pd-default bgrd-primary col-default">
-                                            <label>Onu Monday Emmanuel</label>
-                                        </div>
-                                        <div class="col-2 rt-align pd-default bgrd-primary col-default" onclick="showDrowndown(event, 'dropdown')">
-                                            <div class="dropdown">
-                                                    <i class="material-icons lg">more_vert</i>
-                                                <div id="dropdown" class="dropdown-content">
-                                                    <label onclick="showModal('manageAdmins', 'delete')">Delete</label>
-                                                    <label onclick="showModal('manageAdmins', 'deactivate')">Deactivate</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-6 lf-align pd-default col-primary">
-                                            <label>Admin</label>
-                                        </div>
-                                        <div class="col-6 rt-align pd-default col-primary">
-                                            <label>Staff ID: 0008912</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li> 
+                        <ul id="adminList" class="ul-no"> 
                         </ul>
                     </div>
                 </div>
@@ -108,11 +82,11 @@
                     <div class="panel-lg">
                         <div class="container bgrd-gray">
                             <div class="row">
-                                <div class="col-8 lf-align pd-default bgrd-primary col-default">
-                                    <label>Onu Monday Emmanuel</label>
+                                <div class="col-6 lf-align pd-default bgrd-primary col-default">
+                                    <label id="adminNameHead">Onu Monday Emmanuel</label>
                                 </div>
-                                <div class="col-4 rt-align pd-default bgrd-primary col-default">
-                                    <label>Staff ID: 1003425</label>
+                                <div class="col-6 rt-align pd-default bgrd-primary col-default">
+                                    <label id="adminIDHead">Staff ID: 1003425</label>
                                 </div>
                             </div>
                             <div class="row">
@@ -125,22 +99,26 @@
                     <div class="card-primary">
                         <form> 
                             <div class="form-items-group txt-sm">
-                                <label for="firstName">Full Name</label>
-                                <input type="text" class="form-item" name="firstName" id="firstName" placeholder="Email Name">
+                                <label for="firstName">FirstName</label>
+                                <input id="adminFirstName" type="text" class="form-item" name="firstName" disabled placeholder="Email Name">
                             </div>
                             <div class="form-items-group txt-sm">
-                                <label for="lastName">Full Name</label>
-                                <input type="text" class="form-item" name="lastName" id="lastName" placeholder="Last Name">
+                                <label for="lastName">LastName</label>
+                                <input id="adminLastName" type="text" class="form-item" name="lastName" disabled placeholder="Last Name">
                             </div>
                             <div class="form-items-group txt-sm">
                                 <label for="email">Email</label>
-                                <input type="email" class="form-item" name="email" id="email" placeholder="Email">
+                                <input id="adminEmail" type="email" class="form-item" name="email" disabled placeholder="Email">
+                            </div>
+                            <div class="form-items-group txt-sm">
+                                <label for="id">Admin ID</label>
+                                <input id="adminID" type="number" class="form-item" name="id" disabled placeholder="Email">
                             </div>
                             <div class="form-items-group">
                                 <label for="jobRole">Job Role</label>
-                                <input type="text" class="form-item" name="jobrole" id="jobrole" placeholder="Job Role" value="Admin" disabled>
+                                <input id="adminRole" type="text" class="form-item" name="jobrole" placeholder="Job Role" disabled>
                             </div>
-                            <input type="button" class="btn-default" value="Update">
+                            <input id="adminButton" type="button" class="btn-default" onclick="edit_updateAdminDetails()" value="Edit">
                         </form>
                     </div>
                 </div>
@@ -171,5 +149,6 @@
         </div>
        </div>
         <script src="../../js/index.js"></script>
+        <script src="../../js/admin/getAdmins.js"></script>
     </body>
 </html>
