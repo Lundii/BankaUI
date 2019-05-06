@@ -1,17 +1,18 @@
 
 let changePassword = () => {
     const user = JSON.parse(localStorage.getItem('StaffUser'));
+    let passwordForm = document.querySelector('#changePasswordForm');
     const body = {
-      oldPassword: document.querySelector('#oldPassword').value,
-      newPassword: document.querySelector('#newPassword').value,
-      confirmPassword: document.querySelector('#confirmPassword').value,
+      oldPassword: passwordForm[0].value,
+      newPassword: passwordForm[1].value,
+      confirmPassword: passwordForm[2].value,
     };
     const fetchData2 = {
       method: 'PATCH',
       body: JSON.stringify(body),
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${user.data.token}`,
+        "Authorization": `Bearer ${user.data.token}`, 
       },
     };
   const url2 = `http://localhost:3000/api/v1/staff/${user.data.id}/changePassword`;

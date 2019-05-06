@@ -79,8 +79,12 @@ const getStaffs = () => {
 };
 
 const edit_updateStaffDetails = () => {
-    document.querySelector('#staffFirstName').disabled = false;
-    document.querySelector('#staffLastName').disabled = false;
+  let staffDetails = document.querySelector('#staffDetailsForm');
+    staffDetails[0].disabled = false;
+    staffDetails[1].disabled = false;
+    staffDetails[2].disabled = false;
+    staffDetails[3].disabled = false;
+    staffDetails[4].disabled = false;
     document.querySelector('#staffButton').value = 'Update';
 }
 // const deleteAccountNumber = (accountNumber, callback) => {

@@ -1,10 +1,11 @@
 
 let changePassword = () => {
     const user = JSON.parse(localStorage.getItem('AdminUser'));
+    let passwordForm = document.querySelector('#changePasswordForm');
     const body = {
-      oldPassword: document.querySelector('#oldPassword').value,
-      newPassword: document.querySelector('#newPassword').value,
-      confirmPassword: document.querySelector('#confirmPassword').value,
+      oldPassword: passwordForm[0].value,
+      newPassword: passwordForm[1].value,
+      confirmPassword: passwordForm[2].value,
     };
     const fetchData2 = {
       method: 'PATCH',
