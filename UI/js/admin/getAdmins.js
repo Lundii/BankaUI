@@ -79,8 +79,12 @@ const getStaffs = () => {
 };
 
 const edit_updateAdminDetails = () => {
-    document.querySelector('#adminFirstName').disabled = false;
-    document.querySelector('#adminLastName').disabled = false;
+  let adminDetails = document.querySelector('#adminDetailsForm');
+    adminDetails[0].disabled = false;
+    adminDetails[1].disabled = false;
+    adminDetails[2].disabled = false;
+    adminDetails[3].disabled = false;
+    adminDetails[4].disabled = false;
     document.querySelector('#adminButton').value = 'Update';
 }
 // const deleteAccountNumber = (accountNumber, callback) => {
