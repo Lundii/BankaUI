@@ -37,9 +37,7 @@ const getStaffs = () => {
         const label4 = document.createElement('label');
         const label5 = document.createElement('label');
         label4.innerHTML = `Delete`;
-        label5.innerHTML = `Deactivate`;
         label4.addEventListener('click', () => {showModal('manageStaffs', 'delete', staff)})
-        label5.addEventListener('click', () => {showModal('manageStaffs', 'deactivate', staff)})
         li.classList.add('shadow', 'bgrd-gray', 'txt-sm');
         div1.classList.add('container', 'mg-default')
         div2.classList.add('row');
@@ -68,7 +66,6 @@ const getStaffs = () => {
         divDr.appendChild(icon);
         divDr.appendChild(divDr2);
         divDr2.appendChild(label4)
-        divDr2.appendChild(label5)
         document.getElementById('staffList').appendChild(li);
       })
     }
@@ -87,26 +84,32 @@ const edit_updateStaffDetails = () => {
     staffDetails[4].disabled = false;
     document.querySelector('#staffButton').value = 'Update';
 }
-// const deleteAccountNumber = (accountNumber, callback) => {
-//   const user = JSON.parse(localStorage.getItem('AdminUser'));
-//   const fetchData2 = {
-//     method: 'DELETE',
-//     headers: {
-//       "Content-Type": "application/json",
-//       "Authorization": `Bearer ${user.data.token}`
-//     },
-//   }
-// const url2 = `http://localhost:3000/api/v1/admin/${user.data.id}/accounts/${accountNumber}`;
-// fetch(url2, fetchData2)
-// .then((res) => res.json())
-// .then(function(data) {
-//   if (data.status === 200 ) {
-//     document.location.reload(); 
-//     callback();
-//   }
-// })
-// .catch(function(error) {
-//   console.log(error)
-// })
-// }
+
+const deleteAccount = (callback) => {
+  const user = JSON.parse(localStorage.getItem('AdminUser'));
+  const staffemail = localStorage.getItem('staffemailDetails');
+  const body = {
+    staffemail
+  }
+  const fetchData2 = {
+    method: 'DELETE',
+    body: JSON.stringify(body), 
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${user.data.token}`
+    },
+  }
+const url2 = `http://localhost:3000/api/v1/admin/${user.data.id}/users`;
+fetch(url2, fetchData2)
+.then((res) => res.json())
+.then(function(data) {
+  if (data.status === 200 ) {
+    document.location.reload(); 
+    callback();
+  }
+})
+.catch(function(error) {
+  console.log(error)
+})
+}
 window.onload = getStaffs();
