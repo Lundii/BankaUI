@@ -37,6 +37,10 @@ fetch(url2, fetchData2)
       const label4 = document.createElement('label');
       label4.innerHTML = `${account.status.toUpperCase()}`;
       li.classList.add('shadow', 'bgrd-gray', 'txt-sm');
+      if (account.status == 'dormant') {
+        li.style.boxShadow = 'inset 0 2px 4px rgba(0,0,0,0.24)';
+        li.style.backgroundColor = 'rgb(195, 189, 189)';
+      }
       div1.classList.add('container', 'mg-default')
       div2.classList.add('row');
       div3.classList.add('col-6', 'lf-align', 'pd-default', 'bgrd-primary', 'col-default');
