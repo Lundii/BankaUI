@@ -28,6 +28,7 @@ function showStaffDetails(staff) {
   staffDetails[4].value = 'Cashier';
   document.querySelector('#staffIDHead').innerHTML = `Staff ID: ${staff.id}`;
   document.querySelector('#staffNameHead').innerHTML = `${staff.firstname} ${staff.lastname}`;
+  localStorage.setItem('staffAccountDetails', JSON.stringify(staff));
 }
 
 function showUserDetails(account) {
@@ -54,6 +55,7 @@ function showAdminDetails(admin) {
   adminDetails[4].value = 'Admin';
   document.querySelector('#adminIDHead').innerHTML = `Admin ID: ${admin.id}`;
   document.querySelector('#adminNameHead').innerHTML = `${admin.firstname} ${admin.lastname}`;
+  localStorage.setItem('adminAccountDetails', JSON.stringify(admin));
 }
 
 function createNewAdmin() {

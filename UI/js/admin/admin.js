@@ -82,6 +82,54 @@ const getAccounts = () => {
   })
 }
 
+const enableFields = ()  => {
+  const accountDetails = document.querySelector('#accountDetailsForm');
+  accountDetails[0].disabled = false;
+  accountDetails[1].disabled = false;
+  accountDetails[4].disabled = false;
+  accountDetails[5].value = "Update";
+}
+
+const editUser = () => {
+  const accountDetails = document.querySelector('#accountDetailsForm');
+  if (accountDetails[5].value === 'Edit') {
+    enableFields();
+    return
+  }
+  const user = JSON.parse(localStorage.getItem('AdminUser'));
+  const userEmail = JSON.parse(localStorage.getItem('clientAccountDetails')).owneremail;
+  const body = {
+    userEmail,
+    firstName: accountDetails[0].value,
+    lastName: accountDetails[1].value,
+  }
+  const fetchData = {
+    method: 'PATCH',
+    body: JSON.stringify(body),
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${user.data.token}`
+    },
+  }
+const url = `http://localhost:3000/api/v1/admin/${user.data.id}/users`;
+fetch(url, fetchData)
+.then((res) => res.json())
+.then(function(data) {
+  accountDetails[0].disabled = true;
+  accountDetails[1].disabled = true;
+  accountDetails[4].disabled = true;
+  accountDetails[5].value = "Edit";
+  if (data.status === 200 ) {
+    accountDetails[0].value = data.data.firstName
+    accountDetails[1].value = data.data.lastName
+    callback();
+  }
+})
+.catch(function(error) {
+  console.log(error)
+})
+}
+
 const deleteAccount = (callback) => {
   const user = JSON.parse(localStorage.getItem('AdminUser'));
   const accountNumber = JSON.parse(localStorage.getItem('clientAccountDetails')).accountnumber;
