@@ -8,6 +8,7 @@ let signup = () => {
     password: form[3].value,
     confirmPassword: form[4].value
   };
+  console.log(data);
   const fetchData = {
     method: 'POST',
     body: JSON.stringify(data),
@@ -18,7 +19,8 @@ let signup = () => {
   fetch(url, fetchData)
   .then((res) => res.json())
   .then(function(data) {
-    localStorage.setItem('clientUser', JSON.stringify(data));
+    console.log(data);
+    localStorage.setItem('ClientUser', JSON.stringify(data));
       if (data.status === 200) {
       window.location.href = '../pages/userPages/createNewAccount.html';
       }

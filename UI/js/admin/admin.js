@@ -84,7 +84,7 @@ const getAccounts = () => {
 
 const deleteAccount = (callback) => {
   const user = JSON.parse(localStorage.getItem('AdminUser'));
-  const accountNumber = localStorage.getItem('accountNumberDetails');
+  const accountNumber = JSON.parse(localStorage.getItem('clientAccountDetails')).accountnumber;
   const fetchData2 = {
     method: 'DELETE',
     headers: {

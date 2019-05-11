@@ -1,6 +1,6 @@
 const transactionDetails = () => {
     const user = JSON.parse(localStorage.getItem('StaffUser'));
-    const accountNumber = localStorage.getItem('accountNumberDetails');
+    const accountNumber = JSON.parse(localStorage.getItem('clientAccountDetails')).accountnumber;
     const fetchData2 = {
       method: 'GET',
       headers: {
