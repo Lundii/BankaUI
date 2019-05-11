@@ -83,9 +83,43 @@ const getAccounts = () => {
   })
 }
 
+const editAccount = () => {
+  const user = JSON.parse(localStorage.getItem('StaffUser'));
+  const clientEmail = JSON.parse(localStorage.getItem('clientAccountDetails')).owneremail
+  const accountDetails = document.querySelector('#accountDetailsForm');
+  const body = {
+    clientEmail,
+    firstName: accountDetails[0].value,
+    lastName: accountDetails[1].value,
+    email: accountDetails[3].value,
+  }
+  const fetchData = {
+    method: 'PATCH',
+    body: JSON.stringify(body),
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${user.data.token}`
+    },
+  }
+const url = `http://localhost:3000/api/v1/staff/${user.data.id}/users`;
+fetch(url, fetchData)
+.then((res) => res.json())
+.then(function(data) {
+  if (data.status === 200 ) {
+    accountDetails[0].value = data.data.firstName
+    accountDetails[1].value = data.data.lastName
+    accountDetails[3].value = data.data.email
+    callback();
+  }
+})
+.catch(function(error) {
+  console.log(error)
+})
+}
+
 const deleteAccount = (callback) => {
   const user = JSON.parse(localStorage.getItem('StaffUser'));
-  const accountNumber = localStorage.getItem('accountNumberDetails');
+  const accountNumber = JSON.parse(localStorage.getItem('clientAccountDetails')).accountnumber;
   const fetchData2 = {
     method: 'DELETE',
     headers: {

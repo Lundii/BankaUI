@@ -40,7 +40,7 @@ function showUserDetails(account) {
   accountDetails[3].value = account.owneremail;
   document.querySelector('#headAcctNum').innerHTML = account.accountnumber;
   document.querySelector('#headAcctName').innerHTML = `${account.firstname} ${account.lastname}`;
-  localStorage.setItem('accountNumberDetails', account.accountnumber);
+  localStorage.setItem('clientAccountDetails', JSON.stringify(account));
 }
 
 function showAdminDetails(admin) {
@@ -107,7 +107,7 @@ function showModal(container, message, account){
   localStorage.setItem('modalAction', message);
   document.querySelector(`#${container}`).style.pointerEvents =  "none";
   document.querySelector(`#${container}`).style.filter = "blur(1px)"; 
-  if (account.accountnumber) localStorage.setItem('accountNumberDetails', account.accountnumber);
+  if (account.accountnumber) localStorage.setItem('clientAccountDetails', JSON.stringify(account));
   if(account.type === 'staff') localStorage.setItem('staffemailDetails', account.email);
 }
 function hideModal(container, action){
@@ -119,12 +119,12 @@ function hideModal(container, action){
         });
       break;
       case 'activate': 
-        activate_deactivateAccount(localStorage.getItem('accountNumberDetails'), 'active', () => {
+        activate_deactivateAccount(JSON.parse(localStorage.getItem('clientAccountDetails')).accountnumber, 'active', () => {
           document.location.reload(); 
         }) 
         break;
       case 'deactivate': 
-        activate_deactivateAccount(localStorage.getItem('accountNumberDetails'), 'dormant', () => {
+        activate_deactivateAccount(JSON.parse(localStorage.getItem('clientAccountDetails')).accountnumber, 'dormant', () => {
           document.location.reload(); 
         }) 
         break;
