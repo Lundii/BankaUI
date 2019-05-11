@@ -75,16 +75,51 @@ const getStaffs = () => {
   });
 };
 
-const edit_updateStaffDetails = () => {
-  let staffDetails = document.querySelector('#staffDetailsForm');
-    staffDetails[0].disabled = false;
-    staffDetails[1].disabled = false;
-    staffDetails[2].disabled = false;
-    staffDetails[3].disabled = false;
-    staffDetails[4].disabled = false;
-    document.querySelector('#staffButton').value = 'Update';
+const enableFields = ()  => {
+  const adminDetails = document.querySelector('#staffDetailsForm');
+  adminDetails[0].disabled = false;
+  adminDetails[1].disabled = false;
+  adminDetails[5].value = "Update";
 }
 
+
+const editUser = () => {
+  const staffDetails = document.querySelector('#staffDetailsForm');
+  if (staffDetails[5].value === 'Edit') {
+    enableFields();
+    return
+  }
+  const user = JSON.parse(localStorage.getItem('AdminUser'));
+  const userEmail = JSON.parse(localStorage.getItem('staffAccountDetails')).email
+  const body = {
+    userEmail,
+    firstName: staffDetails[0].value,
+    lastName: staffDetails[1].value,
+  }
+  const fetchData = {
+    method: 'PATCH',
+    body: JSON.stringify(body),
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${user.data.token}`
+    },
+  }
+const url = `http://localhost:3000/api/v1/admin/${user.data.id}/users`;
+fetch(url, fetchData)
+.then((res) => res.json())
+.then(function(data) {
+  staffDetails[0].disabled = true;
+  staffDetails[1].disabled = true;
+  staffDetails[5].value = "Edit";
+  if (data.status === 200 ) {
+    staffDetails[0].value = data.data.firstName
+    staffDetails[1].value = data.data.lastName
+  }
+})
+.catch(function(error) {
+  console.log(error)
+})
+}
 const deleteAccount = (callback) => {
   const user = JSON.parse(localStorage.getItem('AdminUser'));
   const staffemail = localStorage.getItem('staffemailDetails');

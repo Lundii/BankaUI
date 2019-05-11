@@ -83,15 +83,26 @@ const getAccounts = () => {
   })
 }
 
+const enableFields = ()  => {
+  const accountDetails = document.querySelector('#accountDetailsForm');
+  accountDetails[0].disabled = false;
+  accountDetails[1].disabled = false;
+  accountDetails[4].disabled = false;
+  accountDetails[5].value = "Update";
+}
+
 const editAccount = () => {
+  const accountDetails = document.querySelector('#accountDetailsForm');
+  if (accountDetails[5].value === 'Edit') {
+    enableFields();
+    return
+  }
   const user = JSON.parse(localStorage.getItem('StaffUser'));
   const clientEmail = JSON.parse(localStorage.getItem('clientAccountDetails')).owneremail
-  const accountDetails = document.querySelector('#accountDetailsForm');
   const body = {
     clientEmail,
     firstName: accountDetails[0].value,
     lastName: accountDetails[1].value,
-    email: accountDetails[3].value,
   }
   const fetchData = {
     method: 'PATCH',
@@ -105,11 +116,13 @@ const url = `http://localhost:3000/api/v1/staff/${user.data.id}/users`;
 fetch(url, fetchData)
 .then((res) => res.json())
 .then(function(data) {
+  accountDetails[0].disabled = true;
+  accountDetails[1].disabled = true;
+  accountDetails[4].disabled = true;
+  accountDetails[5].value = "Edit";
   if (data.status === 200 ) {
     accountDetails[0].value = data.data.firstName
     accountDetails[1].value = data.data.lastName
-    accountDetails[3].value = data.data.email
-    callback();
   }
 })
 .catch(function(error) {
