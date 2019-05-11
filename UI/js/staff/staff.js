@@ -35,9 +35,16 @@ const getAccounts = () => {
         const label3 = document.createElement('label');
         label3.innerHTML = `&#x20A6 ${account.balance}`;
         const label4 = document.createElement('label');
+        const label5 = document.createElement('label');
         label4.innerHTML = `Delete`;
-        label4.addEventListener('click', () => {showModal('manageUsers', 'delete', account)})
+        label5.innerHTML = account.status === 'active' ? 'Deactivate' : 'Activate';
+        label4.addEventListener('click', () => {showModal('manageUsers', 'delete', account)});
+        label5.addEventListener('click', () => {showModal('manageUsers', account.status === 'active' ? 'deactivate' : 'activate', account)});
         li.classList.add('shadow', 'bgrd-gray', 'txt-sm');
+        if (account.status == 'dormant') {
+          li.style.boxShadow = 'inset 0 2px 4px rgba(0,0,0,0.24)';
+          li.style.backgroundColor = 'rgb(195, 189, 189)';
+        }
         div1.classList.add('container', 'mg-default')
         div2.classList.add('row');
         div3.classList.add('col-10', 'lf-align', 'pd-default', 'bgrd-primary', 'col-default');
@@ -52,6 +59,7 @@ const getAccounts = () => {
         icon.classList.add('material-icons', 'lg');
         icon.innerHTML = 'more_vert';
         li.appendChild(div1);
+        console.log(account.id);
         div1.appendChild(div2);
         div2.appendChild(div3);
         div2.appendChild(div7);
@@ -64,7 +72,8 @@ const getAccounts = () => {
         div7.appendChild(divDr);
         divDr.appendChild(icon);
         divDr.appendChild(divDr2);
-        divDr2.appendChild(label4)
+        divDr2.appendChild(label4);
+        divDr2.appendChild(label5);
         document.getElementById('acctList').appendChild(li);
       })
     }
@@ -74,8 +83,43 @@ const getAccounts = () => {
   })
 }
 
-const deleteAccountNumber = (accountNumber, callback) => {
+const editAccount = () => {
   const user = JSON.parse(localStorage.getItem('StaffUser'));
+  const clientEmail = JSON.parse(localStorage.getItem('clientAccountDetails')).owneremail
+  const accountDetails = document.querySelector('#accountDetailsForm');
+  const body = {
+    clientEmail,
+    firstName: accountDetails[0].value,
+    lastName: accountDetails[1].value,
+    email: accountDetails[3].value,
+  }
+  const fetchData = {
+    method: 'PATCH',
+    body: JSON.stringify(body),
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${user.data.token}`
+    },
+  }
+const url = `http://localhost:3000/api/v1/staff/${user.data.id}/users`;
+fetch(url, fetchData)
+.then((res) => res.json())
+.then(function(data) {
+  if (data.status === 200 ) {
+    accountDetails[0].value = data.data.firstName
+    accountDetails[1].value = data.data.lastName
+    accountDetails[3].value = data.data.email
+    callback();
+  }
+})
+.catch(function(error) {
+  console.log(error)
+})
+}
+
+const deleteAccount = (callback) => {
+  const user = JSON.parse(localStorage.getItem('StaffUser'));
+  const accountNumber = JSON.parse(localStorage.getItem('clientAccountDetails')).accountnumber;
   const fetchData2 = {
     method: 'DELETE',
     headers: {
@@ -88,7 +132,33 @@ fetch(url2, fetchData2)
 .then((res) => res.json())
 .then(function(data) {
   if (data.status === 200 ) {
-    document.location.reload(); 
+    callback();
+  }
+})
+.catch(function(error) {
+  console.log(error)
+})
+}
+
+
+const activate_deactivateAccount = (accountNumber, status, callback) => {
+  const user = JSON.parse(localStorage.getItem('StaffUser'));
+  const body2 = {
+    status
+  }
+  const fetchData2 = {
+    method: 'PATCH',
+    body: JSON.stringify(body2),
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${user.data.token}`
+    },
+  }
+const url2 = `http://localhost:3000/api/v1/staff/${user.data.id}/account/${accountNumber}`;
+fetch(url2, fetchData2)
+.then((res) => res.json())
+.then(function(data) {
+  if (data.status === 200 ) {
     callback();
   }
 })

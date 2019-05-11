@@ -12,9 +12,6 @@ body {
 }
 body.image1 {
     background-color: #d9e3e6; 
-    background-size: cover; 
-    background-repeat: no-repeat; 
-    background-position: center;
 }
 
 body.image2 {

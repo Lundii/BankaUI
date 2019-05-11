@@ -40,7 +40,7 @@ function showUserDetails(account) {
   accountDetails[3].value = account.owneremail;
   document.querySelector('#headAcctNum').innerHTML = account.accountnumber;
   document.querySelector('#headAcctName').innerHTML = `${account.firstname} ${account.lastname}`;
-  localStorage.setItem('accountNumberDetails', account.accountnumber);
+  localStorage.setItem('clientAccountDetails', JSON.stringify(account));
 }
 
 function showAdminDetails(admin) {
@@ -104,18 +104,31 @@ function showDrowndown(event, id) {
 function showModal(container, message, account){
   document.querySelector("#modal").style.display =  "block";
   document.querySelector('#modalMessage').innerHTML =  `Are you sure you want to ${message} this account`;
+  localStorage.setItem('modalAction', message);
   document.querySelector(`#${container}`).style.pointerEvents =  "none";
   document.querySelector(`#${container}`).style.filter = "blur(1px)"; 
-  if (account.accountnumber) localStorage.setItem('accountNumberDetails', account.accountnumber);
+  if (account.accountnumber) localStorage.setItem('clientAccountDetails', JSON.stringify(account));
+  if(account.type === 'staff') localStorage.setItem('staffemailDetails', account.email);
 }
 function hideModal(container, action){
   if (action === 'YES' ) {
-    deleteAccountNumber(localStorage.getItem('accountNumberDetails'), () => {
-      // document.querySelector("#modal").style.display =  "none";
-      // document.querySelector(`#${container}`).style.filter = "blur(0px)"; 
-      // document.querySelector(`#${container}`).style.pointerEvents =  "all";
-      // document.querySelector(`#${container}`).style.opacity =  "1";
-    });
+    switch (localStorage.getItem('modalAction')) {
+      case 'delete':
+      deleteAccount(() => {
+          document.location.reload();
+        });
+      break;
+      case 'activate': 
+        activate_deactivateAccount(JSON.parse(localStorage.getItem('clientAccountDetails')).accountnumber, 'active', () => {
+          document.location.reload(); 
+        }) 
+        break;
+      case 'deactivate': 
+        activate_deactivateAccount(JSON.parse(localStorage.getItem('clientAccountDetails')).accountnumber, 'dormant', () => {
+          document.location.reload(); 
+        }) 
+        break;
+    }
   }
   else {
     document.querySelector("#modal").style.display =  "none";

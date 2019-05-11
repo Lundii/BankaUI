@@ -220,7 +220,7 @@
                                 <label for="phoneNumber">Phone Number</label>
                                 <input type="number" class="form-item" name="phoneNumber" id="phoneNumber" placeholder="Phone Number">
                             </div>
-                            <input type="button" class="btn-default" onclick="location.href='./userPages/dashboard.html';" value="Edit">
+                            <input type="button" class="btn-default" onclick="editAccount()" value="Edit">
                         </form>
                     </div>
                 </div>
@@ -236,10 +236,10 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div onclick="hideModal('manageUsers')" class="col-6 lf-align pd-default col-primary shadow">
+                                <div onclick="hideModal('manageUsers', 'YES')" class="col-6 lf-align pd-default col-primary shadow">
                                     <label class="col-primary">YES</label>
                                 </div>
-                                <div onclick="hideModal('manageUsers')" class="col-6 rt-align pd-default col-danger shadow">
+                                <div onclick="hideModal('manageUsers', 'NO')" class="col-6 rt-align pd-default col-danger shadow">
                                     <label>NO</label>
                                 </div>
                             </div>
