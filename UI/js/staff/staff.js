@@ -23,7 +23,7 @@ const getAccounts = () => {
         const div3 = document.createElement('div');
         const div4 = document.createElement('div');
         const label1 = document.createElement('label');
-        label1.innerHTML = `${account.firstname.toUpperCase()} ${account.lastname.toUpperCase()}`;
+        label1.innerHTML = `${account.firstname } ${account.lastname }`;
         const div5 = document.createElement('div');
         const div6 = document.createElement('div');
         const div7 = document.createElement('div');
@@ -45,7 +45,7 @@ const getAccounts = () => {
           li.style.boxShadow = 'inset 0 2px 4px rgba(0,0,0,0.24)';
           li.style.backgroundColor = 'rgb(195, 189, 189)';
         }
-        div1.classList.add('container', 'mg-default')
+        div1.classList.add('container', 'mg-default', 'no_padLeft')
         div2.classList.add('row');
         div3.classList.add('col-10', 'lf-align', 'pd-default', 'bgrd-primary', 'col-default');
         div7.classList.add('col-2', 'rt-align', 'pd-default', 'bgrd-primary', 'col-default');
@@ -59,7 +59,6 @@ const getAccounts = () => {
         icon.classList.add('material-icons', 'lg');
         icon.innerHTML = 'more_vert';
         li.appendChild(div1);
-        console.log(account.id);
         div1.appendChild(div2);
         div2.appendChild(div3);
         div2.appendChild(div7);
@@ -76,6 +75,18 @@ const getAccounts = () => {
         divDr2.appendChild(label5);
         document.getElementById('acctList').appendChild(li);
       })
+      if (data.message){
+        showErrMessModal('manageUsers', 'Message', data.message);
+      } 
+    }
+    else if (data.status === 401) {
+      showErrMessModal('manageUsers', 'Error', data.error);
+      setTimeout(() => {
+        window.location.href = '../../pages/signup.html'
+      }, 2000)
+    }
+    else {
+      showErrMessModal('manageUsers', 'Error', data.error);
     }
   })
   .catch(function(error) {
@@ -83,7 +94,7 @@ const getAccounts = () => {
   })
 }
 
-const enableFields = ()  => {
+const enableUserFields = ()  => {
   const accountDetails = document.querySelector('#accountDetailsForm');
   accountDetails[0].disabled = false;
   accountDetails[1].disabled = false;
@@ -94,7 +105,7 @@ const enableFields = ()  => {
 const editAccount = () => {
   const accountDetails = document.querySelector('#accountDetailsForm');
   if (accountDetails[5].value === 'Edit') {
-    enableFields();
+    enableUserFields();
     return
   }
   const user = JSON.parse(localStorage.getItem('StaffUser'));
@@ -123,6 +134,30 @@ fetch(url, fetchData)
   if (data.status === 200 ) {
     accountDetails[0].value = data.data.firstName
     accountDetails[1].value = data.data.lastName
+    if (data.message) {
+      showErrMessModal('userDetails', 'Message', data.message);
+    }
+  }
+  else if (data.status === 401) {
+    showErrMessModal('Error', data.error);
+    setTimeout(() => {
+      window.location.href = '../../pages/signup.html'
+    }, 2000)
+  }
+  else {
+    let errorDiv = document.querySelector('#sfmanUserErrors');
+    const errorNodes = errorDiv.childNodes;
+    const length = errorNodes.length;
+    for (let i = 0; i < length; i++) {
+        errorDiv.removeChild(errorNodes[0]);
+    }
+    const errors = data.error.split('|  ');
+    errors.forEach((error, index) => {
+      const para = document.createElement('p');
+      para.classList.add('txt-sm', 'col-danger', 'lf-align', 'error');
+      para.innerHTML = error;
+      errorDiv.appendChild(para);
+    });
   }
 })
 .catch(function(error) {

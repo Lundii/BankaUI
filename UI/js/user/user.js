@@ -20,13 +20,13 @@ fetch(url2, fetchData2)
   
     accountSummary.data.forEach((account) => {
       const li = document.createElement('li');
-      li.addEventListener('click', () => {transactionDetails(account.accountnumber)})
+      li.addEventListener('click', () => {transactionDetails(account)})
       const div1 = document.createElement('div');
       const div2 = document.createElement('div');
       const div3 = document.createElement('div');
       const div4 = document.createElement('div');
       const label1 = document.createElement('label');
-      label1.innerHTML = `${account.type.toUpperCase()} ACCOUNT`;
+      label1.innerHTML = `${(account.type).charAt(0).toUpperCase()+account.type.slice(1) } account`;
       const div5 = document.createElement('div');
       const div6 = document.createElement('div');
       const div7 = document.createElement('div');
@@ -35,13 +35,13 @@ fetch(url2, fetchData2)
       const label3 = document.createElement('label');
       label3.innerHTML = `&#x20A6 ${account.balance}`;
       const label4 = document.createElement('label');
-      label4.innerHTML = `${account.status.toUpperCase()}`;
+      label4.innerHTML = `${account.status }`;
       li.classList.add('shadow', 'bgrd-gray', 'txt-sm');
       if (account.status == 'dormant') {
         li.style.boxShadow = 'inset 0 2px 4px rgba(0,0,0,0.24)';
         li.style.backgroundColor = 'rgb(195, 189, 189)';
       }
-      div1.classList.add('container', 'mg-default')
+      div1.classList.add('container', 'mg-default', 'no_padLeft')
       div2.classList.add('row');
       div3.classList.add('col-6', 'lf-align', 'pd-default', 'bgrd-primary', 'col-default');
       div7.classList.add('col-6', 'rt-align', 'pd-default', 'bgrd-primary', 'col-default');
@@ -61,6 +61,18 @@ fetch(url2, fetchData2)
       div7.appendChild(label4);
       document.getElementById('sumList').appendChild(li);
     })
+    if (data.message){
+      showErrMessModal('accountSummary', 'Message', data.message);
+    } 
+  }
+  else if (data.status === 401) {
+    showErrMessModal('accountSummary', 'Error', data.error);
+    setTimeout(() => {
+      window.location.href = '../../pages/signup.html'
+    }, 2000)
+  }
+  else {
+    showErrMessModal('accountSummary', 'Error', data.error);
   }
 })
 .catch(function(error) {
@@ -68,7 +80,7 @@ fetch(url2, fetchData2)
 })
 }
 
-const transactionDetails = (accountNumber) => {
+const transactionDetails = (accountDe) => {
   const user = JSON.parse(localStorage.getItem('ClientUser'));
   const fetchData2 = {
     method: 'GET',
@@ -77,7 +89,7 @@ const transactionDetails = (accountNumber) => {
       "Authorization": `Bearer ${user.data.token}`
     },
   }
-const url2 = `http://localhost:3000/api/v1/user/${user.data.id}/accounts/${accountNumber}/transactions`;
+const url2 = `http://localhost:3000/api/v1/user/${user.data.id}/accounts/${accountDe.accountnumber}/transactions`;
 fetch(url2, fetchData2)
 .then((res) => res.json())
 .then(function(data) {
@@ -91,7 +103,7 @@ fetch(url2, fetchData2)
         const li = document.createElement('li');
         li.addEventListener('click', () => {showModal2('accountHistory', account)});
         document.querySelector("#transListNum").innerHTML = account.accountnumber;
-        document.querySelector("#transListBal").innerHTML = `&#x20A6 ${account.newbalance}`;
+        document.querySelector("#transListBal").innerHTML = `&#x20A6 ${accountDe.balance}`;
         const div1 = document.createElement('div');
         const div2 = document.createElement('div');
         const div3 = document.createElement('div');
@@ -103,9 +115,15 @@ fetch(url2, fetchData2)
         const label2 = document.createElement('label');
         label2.innerHTML = account.type;
         const label3 = document.createElement('label');
-        label3.innerHTML = `&#x20A6 ${account.amount}`;
+        if (account.type === 'debit'){
+          label3.innerHTML = `- &#x20A6 ${account.amount}`;
+          label3.style.color = 'red';
+        }
+        else {
+          label3.innerHTML = `&#x20A6 ${account.amount}`;
+        }
         li.classList.add('shadow', 'bgrd-gray', 'txt-sm');
-        div1.classList.add('container', 'mg-default')
+        div1.classList.add('container', 'mg-default', 'no_padLeft')
         div2.classList.add('row');
         div3.classList.add('col-12', 'lf-align', 'pd-default', 'bgrd-primary', 'col-default');
         div4.classList.add('row');
@@ -123,6 +141,18 @@ fetch(url2, fetchData2)
         document.getElementById('transList').appendChild(li);
       })
     }
+    if (data.message){
+      showErrMessModal('accountHistory', 'Message', data.message);
+    } 
+  }
+  else if (data.status === 401) {
+    showErrMessModal('accountHistory', 'Error', data.error);
+    setTimeout(() => {
+      window.location.href = '../../pages/signup.html'
+    }, 2000)
+  }
+  else {
+    showErrMessModal('accountHistory', 'Error', data.error);
   }
 })
 .catch(function(error) {

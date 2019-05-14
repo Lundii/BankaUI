@@ -155,3 +155,18 @@ function hideModal2(container){
   document.querySelector(`#${container}`).style.filter = "blur(0px)"; 
   document.querySelector(`#${container}`).style.opacity =  "1";
 }
+
+function showErrMessModal(container, errMess, value) {
+  document.querySelector('#errMessModal').style.display = "block";
+  document.querySelector('#mess').innerHTML = value;
+  document.querySelector('#messHeader').innerHTML = errMess;
+  document.querySelector(`#${container}`).style.pointerEvents =  "none";
+  document.querySelector(`#${container}`).style.filter = "blur(1px)"; 
+}
+
+function hideerrMessModal(container){
+  document.querySelector('#errMessModal').style.display = "none";
+  document.querySelector(`#${container}`).style.filter = "blur(0px)"; 
+  document.querySelector(`#${container}`).style.opacity =  "1";
+  document.querySelector(`#${container}`).style.pointerEvents =  "all";
+}

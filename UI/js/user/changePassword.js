@@ -20,7 +20,30 @@ let changePassword = () => {
   .then((res) => res.json())
   .then(function(data) {
     if (data.status === 200 ) {
-      console.log('Password successfully changed')
+      if (data.message){
+        showErrMessModal('uRChpassword', 'Message', data.message);
+      } 
+    }
+    else if (data.status === 401) {
+      showErrMessModal('uRChpassword', 'Error', data.error);
+      setTimeout(() => {
+        window.location.href = '../../pages/signup.html'
+      }, 2000)
+    }
+    else {
+      let errorDiv = document.querySelector('#userpassErrors');
+      const errorNodes = errorDiv.childNodes;
+      const length = errorNodes.length;
+      for (let i = 0; i < length; i++) {
+          errorDiv.removeChild(errorNodes[0]);
+      }
+      const errors = data.error.split('|  ');
+      errors.forEach((error, index) => {
+        const para = document.createElement('p');
+        para.classList.add('txt-sm', 'col-danger', 'lf-align', 'error');
+        para.innerHTML = error;
+        errorDiv.appendChild(para);
+      });
     }
   })
   .catch(function(error) {
