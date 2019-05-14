@@ -64,11 +64,19 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-6 lf-align pd-default col-primary">
-                                    <label></label>
+                                <div class="col-12 lt-align">
+                                <label class="form-item col-primary">Filters</label>
                                 </div>
-                                <div class="col-6 rt-align pd-default col-primary">
-                                    <label></label>
+                            </div>
+                            <div class="row">
+                                <div class="col-5 pd-default col-primary">
+                                    <input type="email" class="form-item col-7 lf-align" placeholder="Admin Email">
+                                </div>
+                                <div class="col-5 lf-align pd-default col-primary">
+                                    <input type="number" class="form-item lf-align" placeholder="Admin ID">
+                                </div>
+                                <div class="col-2 pd-default col-primary">
+                                    <input type="button" class="form-item bgrd-primary col-default pointer" value="Apply">
                                 </div>
                             </div>
                         </div>
@@ -97,6 +105,7 @@
                         </div>
                     </div>
                     <div class="card-primary">
+                            <div id="admanAdErrors" class="errors"></div>
                         <form id=adminDetailsForm> 
                             <div class="form-items-group txt-sm">
                                 <label for="firstName">FirstName</label>
@@ -145,6 +154,32 @@
                     </div>
                 </div>
                 <div class="col-3 nav"></div>
+                <div id="errMessModal" class="container modal hidden">
+                    <div class='row'>
+                        <div class="col-5 pd-default"></div>
+                        <div class="col-5">
+                                <div class="container bgrd-gray shadow">
+                                    <div class="row">
+                                        <div class="col-12 lf-align pd-default bgrd-primary col-default">
+                                            <label id="messHeader">Message</label>
+                                        </div>
+                                        <div class="col-12 lf-align pd-default col-primary">
+                                            <label id="mess">Message</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-4"></div>
+                                        <div onclick="hideerrMessModal('adminDetails')" class="col-4 ct-align pd-default col-danger shadow">
+                                            <label>Close</label>
+                                        </div>
+                                        <div class="col-4"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-2 nav"></div>
+                    </div>
+                </div>
             </div>
         </div>
        </div>

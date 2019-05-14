@@ -74,7 +74,7 @@
                                             <label class="col-primary">FirstName</label>
                                         </div>
                                         <div onclick="" class="col-6 lf-align pd-default col-primary">
-                                            <label id="firstNameLabel">Name</label>
+                                            <label id="firstNameLabel"></label>
                                         </div>
                                     </div>
                                     <div class="row shadow modalRow">
@@ -82,15 +82,15 @@
                                             <label class="col-primary">LastName</label>
                                         </div>
                                         <div onclick="" class="col-6 lf-align pd-default col-primary">
-                                            <label id="lastNameLabel">Name</label>
+                                            <label id="lastNameLabel"></label>
                                         </div>
                                     </div>
                                     <div class="row shadow modalRow">
                                         <div onclick="" class="col-6 lf-align pd-default col-primary">
                                             <label class="col-primary">Email</label>
                                         </div>
-                                        <div onclick="" class="col-6 lf-align pd-default col-primary">
-                                            <label id="emailLabel">Email</label>
+                                        <div onclick="" class="col-6 lf-align pd-default col-primary over_auto">
+                                            <label id="emailLabel"></label>
                                         </div>
                                     </div>
                                 </div>
@@ -179,6 +179,32 @@
                     </div>
                 </div>
                 <div class="col-3 nav"></div>
+                <div id="errMessModal" class="container modal hidden">
+                    <div class='row'>
+                        <div class="col-5 pd-default"></div>
+                        <div class="col-5">
+                                <div class="container bgrd-gray shadow">
+                                    <div class="row">
+                                        <div class="col-12 lf-align pd-default bgrd-primary col-default">
+                                            <label id="messHeader">Message</label>
+                                        </div>
+                                        <div class="col-12 lf-align pd-default col-primary">
+                                            <label id="mess">Message</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-4"></div>
+                                        <div onclick="hideerrMessModal('accountHistory')" class="col-4 ct-align pd-default col-danger shadow">
+                                            <label>Close</label>
+                                        </div>
+                                        <div class="col-4"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-2 nav"></div>
+                    </div>
+                </div>
             </div>
        </div>
         <script src="../../js/index.js"></script>

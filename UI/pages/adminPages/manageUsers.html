@@ -59,123 +59,34 @@
                                 <div class="col-12 lf-align pd-default bgrd-primary col-default">
                                     <label>Manage Accounts</label>
                                 </div>
+                                <div class="row">
+                                  <div class="col-12 lt-align">
+                                    <label class="form-item col-primary">Filters</label>
+                                  </div>
+                                </div>
                             </div>
                             <div class="row">
-                                <div class="col-6 lf-align pd-default col-primary">
-                                    <label></label>
+                                <div class="col-2 pd-default col-primary">
+                                <select class="form-item">
+                                    <option value="all">All</option>
+                                    <option value="active">Active</option>
+                                    <option value="dormant">Dormant</option>
+                                </select>
                                 </div>
-                                <div class="col-6 rt-align pd-default col-primary">
-                                    <label></label>
+                                <div class="col-4 pd-default col-primary">
+                                    <input type="email" class="form-item col-7 lf-align" placeholder="Owner Email">
+                                </div>
+                                <div class="col-4 lf-align pd-default col-primary">
+                                    <input type="number" class="form-item lf-align" placeholder="Account Number">
+                                </div>
+                                <div class="col-2 pd-default col-primary">
+                                    <input type="button" class="form-item bgrd-primary col-default pointer" value="Apply">
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div id="acctHistory" class="card-primary">
                         <ul id="acctList" class="ul-no"> 
-                            <!-- <li onclick="showUserDetails()" class="shadow bgrd-gray txt-sm">
-                                <div class="container mg-default">
-                                    <div class="row">
-                                        <div class="col-10 lf-align pd-default bgrd-primary col-default">
-                                            <label>Adamu Rufayat Atinuke</label>
-                                        </div>
-                                        <div class="col-2 rt-align pd-default bgrd-primary col-default" onclick="showDrowndown(event, 'dropdown')">
-                                            <div class="dropdown">
-                                                    <i class="material-icons lg">more_vert</i>
-                                                <div id="dropdown" class="dropdown-content">
-                                                    <label onclick="showModal('manageUsers', 'delete')">Delete</label>
-                                                    <label onclick="showModal('manageUsers', 'deactivate')">Deactivate</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-6 lf-align pd-default col-primary">
-                                            <label>2093483785</label>
-                                        </div>
-                                        <div class="col-6 rt-align pd-default col-primary">
-                                            <label>&#x20A6 45,000.00</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li> 
-                            <li onclick="showUserDetails()" class="shadow bgrd-gray txt-sm">
-                                <div class="container mg-default">
-                                    <div class="row">
-                                        <div class="col-10 lf-align pd-default bgrd-primary col-default">
-                                            <label>Audu John Eche</label>
-                                        </div>
-                                        <div class="col-2 rt-align pd-default bgrd-primary col-default" onclick="showDrowndown(event, 'dropdown1')">
-                                            <div class="dropdown">
-                                                    <i class="material-icons lg">more_vert</i>
-                                                <div id="dropdown1" class="dropdown-content">
-                                                    <label onclick="showModal('manageUsers', 'delete')">Delete</label>
-                                                    <label onclick="showModal('manageUsers', 'deactivate')">Deactivate</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-6 pd-default lf-align col-primary">
-                                            <label>2919309898</label>
-                                        </div>
-                                        <div class="col-6 rt-align pd-default col-primary">
-                                            <label>&#x20A6 1,235,000.00</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li> 
-                            <li onclick="showUserDetails()" class="shadow bgrd-gray txt-sm">
-                                <div class="container mg-default">
-                                    <div class="row">
-                                        <div class="col-10 lf-align pd-default bgrd-primary col-default">
-                                            <label>Peter Tunde Abiodun</label>
-                                        </div>
-                                        <div class="col-2 rt-align pd-default bgrd-primary col-default" onclick="showDrowndown(event, 'dropdown2')">
-                                            <div class="dropdown">
-                                                    <i class="material-icons lg">more_vert</i>
-                                                <div id="dropdown2" class="dropdown-content">
-                                                    <label onclick="showModal('manageUsers', 'delete')">Delete</label>
-                                                    <label onclick="showModal('manageUsers', 'deactivate')">Deactivate</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-6 lf-align pd-default col-primary">
-                                            <label>3094834890</label>
-                                        </div>
-                                        <div class="col-6 rt-align pd-default col-primary">
-                                            <label>&#x20A6 27,500.00</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li> 
-                            <li onclick="showUserDetails()" class="shadow bgrd-gray txt-sm">
-                                <div class="container mg-default">
-                                    <div class="row">
-                                        <div class="col-10 lf-align pd-default bgrd-primary col-default">
-                                            <label>Nwachukwu Vincent </label>
-                                        </div>
-                                        <div class="col-2 rt-align pd-default bgrd-primary col-default" onclick="showDrowndown(event, 'dropdown3')">
-                                            <div class="dropdown">
-                                                    <i class="material-icons lg">more_vert</i>
-                                                <div id="dropdown3" class="dropdown-content">
-                                                    <label onclick="showModal('manageUsers', 'delete')">Delete</label>
-                                                    <label onclick="showModal('manageUsers', 'deactivate')">Deactivate</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-6 pd-default lf-align col-primary">
-                                            <label>3897627873</label>
-                                        </div>
-                                        <div class="col-6 rt-align pd-default col-primary">
-                                            <label>&#x20A6 835,000.00</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li> -->
                         </ul>
                     </div>
                 </div>
@@ -199,6 +110,17 @@
                         </div>
                     </div>
                     <div id="acctHistory" class="card-primary">
+                        <div class="container bgrd-gray">
+                            <div class="row">
+                                <div class="col-5"></div>
+                                <div class="col-3 rt-align pd-default bgrd-primary col-default">
+                                  <div class="passport">
+
+                                  </div>
+                                <div clas="col-4"></div>
+                            </div>
+                        </div>
+                        <div id="admanUserErrors" class="errors"></div>
                         <form id="accountDetailsForm"> 
                             <div class="form-items-group txt-sm">
                                 <label for="firstName">First Name</label>
@@ -247,6 +169,32 @@
                     </div>
                 </div>
                 <div class="col-3 nav"></div>
+                <div id="errMessModal" class="container modal hidden">
+                    <div class='row'>
+                        <div class="col-5 pd-default"></div>
+                        <div class="col-5">
+                                <div class="container bgrd-gray shadow">
+                                    <div class="row">
+                                        <div class="col-12 lf-align pd-default bgrd-primary col-default">
+                                            <label id="messHeader">Message</label>
+                                        </div>
+                                        <div class="col-12 lf-align pd-default col-primary">
+                                            <label id="mess">Message</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-4"></div>
+                                        <div onclick="hideerrMessModal('userDetails')" class="col-4 ct-align pd-default col-danger shadow">
+                                            <label>Close</label>
+                                        </div>
+                                        <div class="col-4"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-2 nav"></div>
+                    </div>
+                </div>
             </div>
        </div>
         <script src="../../js/index.js"></script>

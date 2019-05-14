@@ -32,9 +32,15 @@ const transactionDetails = () => {
           const label2 = document.createElement('label');
           label2.innerHTML = account.type;
           const label3 = document.createElement('label');
-          label3.innerHTML = `&#x20A6 ${account.amount}`;
+          if (account.type === 'debit'){
+            label3.innerHTML = `- &#x20A6 ${account.amount}`;
+            label3.style.color = 'red';
+          }
+          else {
+            label3.innerHTML = `&#x20A6 ${account.amount}`;
+          }
           li.classList.add('shadow', 'bgrd-gray', 'txt-sm');
-          div1.classList.add('container', 'mg-default')
+          div1.classList.add('container', 'mg-default', 'no_padLeft')
           div2.classList.add('row');
           div3.classList.add('col-12', 'lf-align', 'pd-default', 'bgrd-primary', 'col-default');
           div4.classList.add('row');
@@ -52,6 +58,18 @@ const transactionDetails = () => {
           document.getElementById('transHistList').appendChild(li);
         })
       }
+      if (data.message){
+        showErrMessModal('acctHistory', 'Message', data.message);
+      } 
+    }
+    else if (data.status === 401) {
+      showErrMessModal('acctHistory', 'Error', data.error);
+      setTimeout(() => {
+        window.location.href = '../../pages/signup.html'
+      }, 2000)
+    }
+    else {
+      showErrMessModal('acctHistory', 'Error', data.error);
     }
   })
   .catch(function(error) {
