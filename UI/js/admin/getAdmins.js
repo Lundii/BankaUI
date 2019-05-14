@@ -69,17 +69,17 @@ const getStaffs = () => {
         document.getElementById('adminList').appendChild(li);
       })
       if (data.message){
-        showErrMessModal('manageAdmins', 'Message', data.message);
+        showErrMessModal('adminDetails', 'Message', data.message);
       } 
     }
     else if (data.status === 401) {
-      showErrMessModal('manageAdmins', 'Error', data.error);
+      showErrMessModal('adminDetails', 'Error', data.error);
       setTimeout(() => {
         window.location.href = '../../pages/signup.html'
       }, 2000)
     }
     else {
-      showErrMessModal('manageAdmins', 'Error', data.error);
+      showErrMessModal('adminDetails', 'Error', data.error);
     }
   })
   .catch(function(error) {

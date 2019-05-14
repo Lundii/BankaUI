@@ -69,17 +69,17 @@ const getStaffs = () => {
         document.getElementById('staffList').appendChild(li);
       })
       if (data.message){
-        showErrMessModal('manageStaffs', 'Message', data.message);
+        showErrMessModal('staffDetails', 'Message', data.message);
       } 
     }
     else if (data.status === 401) {
-      showErrMessModal('manageStaffs', 'Error', data.error);
+      showErrMessModal('staffDetails', 'Error', data.error);
       setTimeout(() => {
         window.location.href = '../../pages/signup.html'
       }, 2000)
     }
     else {
-      showErrMessModal('manageStaffs', 'Error', data.error);
+      showErrMessModal('staffDetails', 'Error', data.error);
     }
   })
   .catch(function(error) {

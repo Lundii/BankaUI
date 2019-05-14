@@ -76,17 +76,17 @@ const getAccounts = () => {
         document.getElementById('acctList').appendChild(li);
       })
       if (data.message){
-        showErrMessModal('manageUsers', 'Message', data.message);
+        showErrMessModal('userDetails', 'Message', data.message);
       } 
     }
     else if (data.status === 401) {
-      showErrMessModal('manageUsers', 'Error', data.error);
+      showErrMessModal('userDetails', 'Error', data.error);
       setTimeout(() => {
         window.location.href = '../../pages/signup.html'
       }, 2000)
     }
     else {
-      showErrMessModal('manageUsers', 'Error', data.error);
+      showErrMessModal('userDetails', 'Error', data.error);
     }
   })
   .catch(function(error) {
