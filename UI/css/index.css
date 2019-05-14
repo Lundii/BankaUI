@@ -152,7 +152,7 @@ li a {
     color: rgb(18, 18, 107);
 }
 .txt-ssm {
-    font-size: 10px;
+    font-size: 12px;
 }
 .txt-sm {
     font-size: 15px;
@@ -162,6 +162,12 @@ li a {
 }
 .txt-lg {
     font-size: 40px;
+}
+.over_auto {
+    overflow: auto;
+}
+.no_padLeft {
+    padding-left: 0px;
 }
 .col-1 { width: 8.33%;}
 .col-2 { width: 16.66%;}
@@ -535,8 +541,33 @@ form {
 .show {
     display: block;
 }
+
+.errors {
+    display: flex;
+    flex-direction: column;
+    margin-top: 8px;
+}
+
+.error {
+    padding-left: 20px;
+    font-size: 15px;
+    margin: 0px;
+}
 @media only screen and (max-width: 720px) {
     /* For mobile phones: */
+    
+    li>div>div>.col-1 { width: 8.33%;}
+    li>div>div>.col-2 { width: 16.66%;}
+    li>div>div>.col-3 { width: 25%;}
+    li>div>div>.col-4 { width: 33.33%;}
+    li>div>div>.col-5 { width: 41.66%;}
+    li>div>div>.col-6 { width: 50%;}
+    li>div>div>.col-7 { width: 58.33%;}
+    li>div>div>.col-8 { width: 66.66%;}
+    li>div>div>.col-9 { width: 75%;}
+    li>div>div>.col-10 { width: 83.33%;}
+    li>div>div>.col-11 { width: 91.66%;}
+    li>div>div>.col-12 { width: 100%;}
     .bg_slideshow_items > .item > .slideshow_caption {
         bottom: -35%;
         animation: slideshow_caption 5s 0s linear infinite;

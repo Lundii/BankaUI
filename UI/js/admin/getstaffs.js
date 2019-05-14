@@ -23,7 +23,7 @@ const getStaffs = () => {
         const div3 = document.createElement('div');
         const div4 = document.createElement('div');
         const label1 = document.createElement('label');
-        label1.innerHTML = `${staff.firstname.toUpperCase()} ${staff.lastname.toUpperCase()}`;
+        label1.innerHTML = `${staff.firstname } ${staff.lastname }`;
         const div5 = document.createElement('div');
         const div6 = document.createElement('div');
         const div7 = document.createElement('div');
@@ -39,7 +39,7 @@ const getStaffs = () => {
         label4.innerHTML = `Delete`;
         label4.addEventListener('click', () => {showModal('manageStaffs', 'delete', staff)})
         li.classList.add('shadow', 'bgrd-gray', 'txt-sm');
-        div1.classList.add('container', 'mg-default')
+        div1.classList.add('container', 'mg-default', 'no_padLeft')
         div2.classList.add('row');
         div3.classList.add('col-10', 'lf-align', 'pd-default', 'bgrd-primary', 'col-default');
         div7.classList.add('col-2', 'rt-align', 'pd-default', 'bgrd-primary', 'col-default');
@@ -68,6 +68,18 @@ const getStaffs = () => {
         divDr2.appendChild(label4)
         document.getElementById('staffList').appendChild(li);
       })
+      if (data.message){
+        showErrMessModal('manageStaffs', 'Message', data.message);
+      } 
+    }
+    else if (data.status === 401) {
+      showErrMessModal('manageStaffs', 'Error', data.error);
+      setTimeout(() => {
+        window.location.href = '../../pages/signup.html'
+      }, 2000)
+    }
+    else {
+      showErrMessModal('manageStaffs', 'Error', data.error);
     }
   })
   .catch(function(error) {
@@ -75,7 +87,7 @@ const getStaffs = () => {
   });
 };
 
-const enableFields = ()  => {
+const enableStaffFields = ()  => {
   const adminDetails = document.querySelector('#staffDetailsForm');
   adminDetails[0].disabled = false;
   adminDetails[1].disabled = false;
@@ -83,10 +95,10 @@ const enableFields = ()  => {
 }
 
 
-const editUser = () => {
+const editStaff_admin = () => {
   const staffDetails = document.querySelector('#staffDetailsForm');
   if (staffDetails[5].value === 'Edit') {
-    enableFields();
+    enableStaffFields();
     return
   }
   const user = JSON.parse(localStorage.getItem('AdminUser'));
@@ -114,6 +126,30 @@ fetch(url, fetchData)
   if (data.status === 200 ) {
     staffDetails[0].value = data.data.firstName
     staffDetails[1].value = data.data.lastName
+    if (data.message) {
+      showErrMessModal('staffDetails', 'Message', data.message);
+    }
+  }
+  else if (data.status === 401) {
+    showErrMessModal('staffDetails', 'Error', data.error);
+    setTimeout(() => {
+      window.location.href = '../../pages/signup.html'
+    }, 2000)
+  }
+  else {
+    let errorDiv = document.querySelector('#admanSfErrors');
+    const errorNodes = errorDiv.childNodes;
+    const length = errorNodes.length;
+    for (let i = 0; i < length; i++) {
+        errorDiv.removeChild(errorNodes[0]);
+    }
+    const errors = data.error.split('|  ');
+    errors.forEach((error, index) => {
+      const para = document.createElement('p');
+      para.classList.add('txt-sm', 'col-danger', 'lf-align', 'error');
+      para.innerHTML = error;
+      errorDiv.appendChild(para);
+    });
   }
 })
 .catch(function(error) {
@@ -139,7 +175,6 @@ fetch(url2, fetchData2)
 .then((res) => res.json())
 .then(function(data) {
   if (data.status === 200 ) {
-    document.location.reload(); 
     callback();
   }
 })

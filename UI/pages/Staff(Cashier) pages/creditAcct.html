@@ -52,7 +52,7 @@
                     </ul>
                 </div>
                 <div class="col-2"></div>
-                <div class="col-5 main-resp">
+                <div id="sfCredit" class="col-5 main-resp">
                     <div class="panel-lg">
                         <div class="container bgrd-gray">
                             <div class="row">
@@ -73,6 +73,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div id="login" class="card-primary">
+                                <div id="creditErrors" class="errors"></div>
                                 <form id="creditForm">
                                     <div class="form-items-group">
                                         <input type="number" onchange="getAccountDetails()" class="form-item" id="creacctNum" name="acctNum" placeholder="Account Number">
@@ -93,6 +94,32 @@
                     </div>
                 </div>
                 <div class="col-2"></div>
+                <div id="errMessModal" class="container modal hidden">
+                    <div class='row'>
+                    <div class="col-5 pd-default"></div>
+                    <div class="col-5">
+                            <div class="container bgrd-gray shadow">
+                                <div class="row">
+                                    <div class="col-12 lf-align pd-default bgrd-primary col-default">
+                                        <label id="messHeader">Message</label>
+                                    </div>
+                                    <div class="col-12 lf-align pd-default col-primary">
+                                        <label id="mess">Message</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-4"></div>
+                                    <div onclick="hideerrMessModal('sfCredit')" class="col-4 ct-align pd-default col-danger shadow">
+                                        <label>Class</label>
+                                    </div>
+                                    <div class="col-4"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-2 nav"></div>
+                    </div>
+                </div>
             </div>
        </div>
         <script src="../../js/index.js"></script>

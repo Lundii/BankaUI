@@ -64,6 +64,7 @@
                         <div class="row">
                             <div class="col-12 login">
                                 <div id="login" class="card-primary">
+                                    <div id="errors" class="errors"></div>
                                     <form id="loginForm">
                                         <div class="form-items-group">
                                             <input type="text" class="form-item" id="email" placeholder="Enter Email">
@@ -71,7 +72,6 @@
                                         <div class="form-items-group">
                                             <input type="password" class="form-item" id="pwrd" placeholder="Password">
                                         </div>
-                                        <!-- <input type="button" class="btn-default" onclick="displayView()" value="LogIn"> -->
                                         <input type="button" class="btn-default" onclick="signin()" value="LogIn">
                                     </form>
                                     <div class="col-primary pd-default width-lg">
@@ -79,6 +79,7 @@
                                     </div>
                                 </div>
                                 <div id="signup" class="card-primary hidden">
+                                    <div id="errors2" class="errors"></div>
                                     <form id="signupForm">
                                         <div class="form-items-group">
                                             <input type="text" class="form-item" id="firstName" placeholder="First Name">

@@ -54,21 +54,36 @@
                 <div class="col-1"></div>
                 <div id="manageUsers" class="col-7 main-resp">
                     <div class="panel-lg">
-                        <div class="container bgrd-gray">
-                            <div class="row">
-                                <div class="col-12 lf-align pd-default bgrd-primary col-default">
-                                    <label>Manage Accounts</label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-6 lf-align pd-default col-primary">
-                                    <label></label>
-                                </div>
-                                <div class="col-6 rt-align pd-default col-primary">
-                                    <label></label>
-                                </div>
+                      <div class="container bgrd-gray">
+                        <div class="row">
+                            <div class="col-12 lf-align pd-default bgrd-primary col-default">
+                                <label>Manage Accounts</label>
                             </div>
                         </div>
+                        <div class="row">
+                          <div class="col-12 lt-align">
+                            <label class="form-item col-primary">Filters</label>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-2 pd-default col-primary">
+                            <select class="form-item">
+                                <option value="all">All</option>
+                                <option value="active">Active</option>
+                                <option value="dormant">Dormant</option>
+                            </select>
+                          </div>
+                          <div class="col-4 pd-default col-primary">
+                              <input type="email" class="form-item col-7 lf-align" placeholder="Owner Email">
+                          </div>
+                          <div class="col-4 lf-align pd-default col-primary">
+                              <input type="number" class="form-item lf-align" placeholder="Account Number">
+                          </div>
+                          <div class="col-2 pd-default col-primary">
+                              <input type="button" class="form-item bgrd-primary col-default pointer" value="Apply">
+                          </div>
+                        </div>
+                      </div>
                     </div>
                     <div id="acctHistory" class="card-primary">
                         <ul id="acctList" class="ul-no">
@@ -95,22 +110,33 @@
                         </div>
                     </div>
                     <div id="acctHistory" class="card-primary">
+                        <div class="container bgrd-gray">
+                            <div class="row">
+                                <div class="col-5"></div>
+                                <div class="col-3 rt-align pd-default bgrd-primary col-default">
+                                  <div class="passport">
+
+                                  </div>
+                                <div clas="col-4"></div>
+                            </div>
+                        </div>
+                        <div id="sfmanUserErrors" class="errors"></div>
                         <form id="accountDetailsForm"> 
                             <div class="form-items-group txt-sm">
                                 <label for="firstName">First Name</label>
-                                <input type="text" class="form-item" name="firstName" id="firstName" placeholder="FirstName" value="Ezinne">
+                                <input type="text" class="form-item" name="firstName" id="firstName" disabled placeholder="FirstName" value="Ezinne">
                             </div>
                             <div class="form-items-group txt-sm">
                                 <label for="lastName">Last Name</label>
-                                <input  type="text" class="form-item" name="lastName" id="lastName" placeholder="LastName" value="Peter">
+                                <input  type="text" class="form-item" name="lastName" id="lastName" disabled placeholder="LastName" value="Peter">
                             </div>
                             <div class="form-items-group">
                                 <label for="acctNum">Account Number</label>
-                                <input type="number" class="form-item" name="acctNum" id="acctNum" placeholder="Account Number" value="1009284578">
+                                <input type="number" class="form-item" name="acctNum" id="acctNum" disabled placeholder="Account Number" value="1009284578">
                             </div>
                             <div class="form-items-group">
                                 <label for="emailAddr">Email Address</label>
-                                <input type="email" class="form-item" name="emailAddr" id="emailAddr" placeholder="Email Address" value="address@email.com">
+                                <input type="email" class="form-item" name="emailAddr" id="emailAddr" disabled placeholder="Email Address" value="address@email.com">
                             </div>
                             <div class="form-items-group">
                                 <label for="phoneNumber">Phone Number</label>
@@ -143,6 +169,32 @@
                     </div>
                 </div>
                 <div class="col-3 nav"></div>
+                <div id="errMessModal" class="container modal hidden">
+                    <div class='row'>
+                        <div class="col-5 pd-default"></div>
+                        <div class="col-5">
+                                <div class="container bgrd-gray shadow">
+                                    <div class="row">
+                                        <div class="col-12 lf-align pd-default bgrd-primary col-default">
+                                            <label id="messHeader">Message</label>
+                                        </div>
+                                        <div class="col-12 lf-align pd-default col-primary">
+                                            <label id="mess">Message</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-4"></div>
+                                        <div onclick="hideerrMessModal('userDetails')" class="col-4 ct-align pd-default col-danger shadow">
+                                            <label>Close</label>
+                                        </div>
+                                        <div class="col-4"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-2 nav"></div>
+                    </div>
+                </div>
             </div>
        </div>
         <script src="../../js/index.js"></script>
