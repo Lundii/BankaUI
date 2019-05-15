@@ -7,7 +7,7 @@ const createSummary = () => {
       "Authorization": `Bearer ${user.data.token}`
     },
   }
-const url2 = `http://localhost:3000/api/v1/user/${user.data.id}/accounts`;
+const url2 = `https://mighty-retreat-71326.herokuapp.com/api/v1/user/${user.data.id}/accounts`;
 fetch(url2, fetchData2)
 .then((res) => res.json())
 .then(function(data) {
@@ -89,7 +89,7 @@ const transactionDetails = (accountDe) => {
       "Authorization": `Bearer ${user.data.token}`
     },
   }
-const url2 = `http://localhost:3000/api/v1/user/${user.data.id}/accounts/${accountDe.accountnumber}/transactions`;
+const url2 = `https://mighty-retreat-71326.herokuapp.com/api/v1/user/${user.data.id}/accounts/${accountDe.accountnumber}/transactions`;
 fetch(url2, fetchData2)
 .then((res) => res.json())
 .then(function(data) {
