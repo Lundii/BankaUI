@@ -54,7 +54,7 @@
                     </ul>
                 </div>
                 <div class="col-2"></div>
-                <div class="col-5 main-resp">
+                <div id="userAirtime" class="col-5 main-resp">
                     <div class="panel-lg">
                         <div class="container bgrd-gray">
                             <div class="row">
@@ -75,9 +75,10 @@
                     <div class="row">
                         <div class="col-12">
                             <div id="login" class="card-primary">
-                                <form>
+                              <div id="airtimeErrors"></div>
+                                <form id="airtimeForm">
                                     <div class="form-items-group">
-                                        <input type="number" class="form-item" id="acctType" name="acctNum" placeholder="Account Number">
+                                        <input type="number" class="form-item" name="acctNum" required placeholder="Account Number">
                                     </div>
                                     <div class="form-items-group">
                                         <select class="form-item" name="type">
@@ -85,24 +86,51 @@
                                             <option value="mtn">MTN</option>
                                             <option value="airtel">Airtel</option>
                                             <option value="glo">Glo</option>
-                                            <option value="9Mobile">9Mobile</option>
+                                            <option value="9mobile">9Mobile</option>
                                         </select>
                                     </div>
                                     <div class="form-items-group">
                                         <input type="number" class="form-item" id="acctName" name="network" placeholder="Phone Number">
                                     </div>
                                     <div class="form-items-group">
-                                        <input type="number" class="form-item" id="bal" name="amount" value="Amount" placeholder="Amount">
+                                        <input type="number" class="form-item" id="bal" name="amount" required placeholder="Amount">
                                     </div>
-                                    <input type="button" class="btn-default" onclick="" value="Buy Airtime">
+                                    <input type="button" class="btn-default" onclick="buyAirtime()" value="Buy Airtime">
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-2"></div>
+                <div id="errMessModal" class="container modal hidden">
+                    <div class='row'>
+                        <div class="col-5 pd-default"></div>
+                        <div class="col-5">
+                                <div class="container bgrd-gray shadow">
+                                    <div class="row">
+                                        <div class="col-12 lf-align pd-default bgrd-primary col-default">
+                                            <label id="messHeader">Message</label>
+                                        </div>
+                                        <div class="col-12 lf-align pd-default col-primary">
+                                            <label id="mess">Message</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-4"></div>
+                                        <div onclick="hideerrMessModal('userAirtime')" class="col-4 ct-align pd-default col-danger shadow">
+                                            <label>Close</label>
+                                        </div>
+                                        <div class="col-4"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-2 nav"></div>
+                    </div>
+                </div>
             </div>
        </div>
         <script src="../../js/index.js"></script>
+        <script src="../../js/user/buyairtime.js"></script>
     </body>
 </html>
