@@ -7,11 +7,11 @@ const createSummary = () => {
       "Authorization": `Bearer ${user.data.token}`
     },
   }
-const url2 = `http://localhost:3000/api/v1/user/${user.data.id}/accounts`;
+const url2 = `https://mighty-retreat-71326.herokuapp.com/api/v1/user/${user.data.id}/accounts`;
 fetch(url2, fetchData2)
 .then((res) => res.json())
 .then(function(data) {
-  if (data.status === 200 ) {
+  if (data.status === 200 && data.data.length) {
     localStorage.setItem('accountSummary', JSON.stringify(data));
     const accountSummary = JSON.parse(localStorage.getItem('accountSummary'));
     document.querySelector('#firstNameLabel').innerHTML = accountSummary.data[0].firstname;
@@ -61,18 +61,18 @@ fetch(url2, fetchData2)
       div7.appendChild(label4);
       document.getElementById('sumList').appendChild(li);
     })
-    if (data.message){
-      showErrMessModal('accountSummary', 'Message', data.message);
-    } 
+  }
+  else if (data.status === 200 && data.message) {
+      showErrMessModal('accountHistory', 'Message', data.message);
   }
   else if (data.status === 401) {
-    showErrMessModal('accountSummary', 'Error', data.error);
+    showErrMessModal('accountHistory', 'Error', data.error);
     setTimeout(() => {
       window.location.href = '../../pages/signup.html'
     }, 2000)
   }
   else {
-    showErrMessModal('accountSummary', 'Error', data.error);
+    showErrMessModal('accountHistory', 'Error', data.error);
   }
 })
 .catch(function(error) {
@@ -89,7 +89,7 @@ const transactionDetails = (accountDe) => {
       "Authorization": `Bearer ${user.data.token}`
     },
   }
-const url2 = `http://localhost:3000/api/v1/user/${user.data.id}/accounts/${accountDe.accountnumber}/transactions`;
+const url2 = `https://mighty-retreat-71326.herokuapp.com/api/v1/user/${user.data.id}/accounts/${accountDe.accountnumber}/transactions`;
 fetch(url2, fetchData2)
 .then((res) => res.json())
 .then(function(data) {

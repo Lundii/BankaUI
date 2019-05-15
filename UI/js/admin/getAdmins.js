@@ -7,8 +7,23 @@ const getStaffs = () => {
         "Authorization": `Bearer ${user.data.token}`
       },
     }
-  const url2 = `http://localhost:3000/api/v1/admin/${user.data.id}/users?type=admin`;
-  fetch(url2, fetchData2)
+  let url = `https://mighty-retreat-71326.herokuapp.com/api/v1/admin/${user.data.id}/users?type=admin`;
+
+  let accountListDiv = document.querySelector('#adminList');
+  const accountList = accountListDiv.childNodes;
+  const length = accountList.length;
+  for (let i = 0; i < length; i++) {
+    accountListDiv.removeChild(accountList[0]);
+  }
+  const emailFilter = document.getElementById('emailFilter').value;
+  const idFilter = document.getElementById('idFilter').value;
+    if (emailFilter) {
+      url = url.concat(`&email=${emailFilter}`);
+    }
+    if (idFilter) {
+      url = url.concat(`&id=${idFilter}`);
+    }
+  fetch(url, fetchData2)
   .then((res) => res.json())
   .then(function(data) {
     if (data.status === 200 ) {
@@ -69,17 +84,17 @@ const getStaffs = () => {
         document.getElementById('adminList').appendChild(li);
       })
       if (data.message){
-        showErrMessModal('manageAdmins', 'Message', data.message);
+        showErrMessModal('adminDetails', 'Message', data.message);
       } 
     }
     else if (data.status === 401) {
-      showErrMessModal('manageAdmins', 'Error', data.error);
+      showErrMessModal('adminDetails', 'Error', data.error);
       setTimeout(() => {
         window.location.href = '../../pages/signup.html'
       }, 2000)
     }
     else {
-      showErrMessModal('manageAdmins', 'Error', data.error);
+      showErrMessModal('adminDetails', 'Error', data.error);
     }
   })
   .catch(function(error) {
@@ -115,7 +130,7 @@ const editUser = () => {
       "Authorization": `Bearer ${user.data.token}`
     },
   }
-const url = `http://localhost:3000/api/v1/admin/${user.data.id}/users`;
+const url = `https://mighty-retreat-71326.herokuapp.com/api/v1/admin/${user.data.id}/users`;
 fetch(url, fetchData)
 .then((res) => res.json())
 .then(function(data) {
@@ -170,7 +185,7 @@ const deleteAccount = (callback) => {
       "Authorization": `Bearer ${user.data.token}`
     },
   }
-const url2 = `http://localhost:3000/api/v1/admin/${user.data.id}/users`;
+const url2 = `https://mighty-retreat-71326.herokuapp.com/api/v1/admin/${user.data.id}/users`;
 fetch(url2, fetchData2)
 .then((res) => res.json())
 .then(function(data) {

@@ -7,8 +7,39 @@ const getAccounts = () => {
         "Authorization": `Bearer ${user.data.token}`
       },
     }
-  const url2 = `http://localhost:3000/api/v1/admin/${user.data.id}/accounts`;
-  fetch(url2, fetchData2)
+    let url = `https://mighty-retreat-71326.herokuapp.com/api/v1/admin/${user.data.id}/accounts`;
+  
+    let accountListDiv = document.querySelector('#acctList');
+    const accountList = accountListDiv.childNodes;
+    const length = accountList.length;
+    for (let i = 0; i < length; i++) {
+      accountListDiv.removeChild(accountList[0]);
+    }
+    const statusFilter = document.getElementById('statusFilter').value;
+    const emailFilter = document.getElementById('emailFilter').value;
+    const numberFilter = document.getElementById('accountNumberFilter').value;
+    if (statusFilter !== 'all' || emailFilter || numberFilter ) {
+      url = url.concat('?')
+    }
+    if (statusFilter !== 'all') {
+      url = url.concat(`status=${statusFilter}`);
+      if (emailFilter) {
+        url = url.concat(`&email=${emailFilter}`);
+      }
+      if (numberFilter) {
+        url = url.concat(`&accountNumber=${numberFilter}`);
+      }
+     }
+     else if (statusFilter === 'all' && emailFilter) {
+      url = url.concat(`email=${emailFilter}`);
+      if (numberFilter) {
+        url = url.concat(`&accountNumber=${numberFilter}`);
+      }
+     }
+     else if (statusFilter === 'all' && numberFilter) {
+       url = url.concat(`accountNumber=${numberFilter}`);
+     }
+  fetch(url, fetchData2)
   .then((res) => res.json())
   .then(function(data) {
     if (data.status === 200 ) {
@@ -76,17 +107,17 @@ const getAccounts = () => {
         document.getElementById('acctList').appendChild(li);
       })
       if (data.message){
-        showErrMessModal('manageUsers', 'Message', data.message);
+        showErrMessModal('userDetails', 'Message', data.message);
       } 
     }
     else if (data.status === 401) {
-      showErrMessModal('manageUsers', 'Error', data.error);
+      showErrMessModal('userDetails', 'Error', data.error);
       setTimeout(() => {
         window.location.href = '../../pages/signup.html'
       }, 2000)
     }
     else {
-      showErrMessModal('manageUsers', 'Error', data.error);
+      showErrMessModal('userDetails', 'Error', data.error);
     }
   })
   .catch(function(error) {
@@ -123,7 +154,7 @@ const editUser = () => {
       "Authorization": `Bearer ${user.data.token}`
     },
   }
-const url = `http://localhost:3000/api/v1/admin/${user.data.id}/users`;
+const url = `https://mighty-retreat-71326.herokuapp.com/api/v1/admin/${user.data.id}/users`;
 fetch(url, fetchData)
 .then((res) => res.json())
 .then(function(data) {
@@ -175,7 +206,7 @@ const deleteAccount = (callback) => {
       "Authorization": `Bearer ${user.data.token}`
     },
   }
-const url2 = `http://localhost:3000/api/v1/admin/${user.data.id}/accounts/${accountNumber}`;
+const url2 = `https://mighty-retreat-71326.herokuapp.com/api/v1/admin/${user.data.id}/accounts/${accountNumber}`;
 fetch(url2, fetchData2)
 .then((res) => res.json())
 .then(function(data) {
@@ -202,7 +233,7 @@ const activate_deactivateAccount = (accountNumber, status, callback) => {
       "Authorization": `Bearer ${user.data.token}`
     },
   }
-const url2 = `http://localhost:3000/api/v1/admin/${user.data.id}/account/${accountNumber}`;
+const url2 = `https://mighty-retreat-71326.herokuapp.com/api/v1/admin/${user.data.id}/account/${accountNumber}`;
 fetch(url2, fetchData2)
 .then((res) => res.json())
 .then(function(data) {

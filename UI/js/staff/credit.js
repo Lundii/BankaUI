@@ -17,7 +17,7 @@ let getAccountDetails = ()=>  {
       },
     }
     console.log(form[0].value);
-    const url2 = `http://localhost:3000/api/v1/staff/${user.data.id}/accounts/${form[0].value}`;
+    const url2 = `https://mighty-retreat-71326.herokuapp.com/api/v1/staff/${user.data.id}/accounts/${form[0].value}`;
     fetch(url2, fetchData2)
     .then((res) => res.json())
     .then(function(data) {
@@ -71,7 +71,7 @@ let getAccountDetails = ()=>  {
       },
     }
     console.log(form[0].value);
-    const url2 = `http://localhost:3000/api/v1/staff/${user.data.id}/transactions/${form[0].value}/credit`;
+    const url2 = `https://mighty-retreat-71326.herokuapp.com/api/v1/staff/${user.data.id}/transactions/${form[0].value}/credit`;
     fetch(url2, fetchData2)
     .then((res) => res.json())
     .then(function(data) {

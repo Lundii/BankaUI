@@ -54,7 +54,7 @@
                     </ul>
                 </div>
                 <div class="col-2"></div>
-                <div class="col-5 main-resp">
+                <div id="usTransfer" class="col-5 main-resp">
                     <div class="panel-lg">
                         <div class="container bgrd-gray">
                             <div class="row">
@@ -74,8 +74,9 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <div id="login" class="card-primary">
-                                <form>
+                            <div class="card-primary">
+                                <div id="transferErrors" class="errors"></div>
+                                <form id="transferForm">
                                     <div class="form-items-group">
                                         <input type="number" class="form-item" id="acctType" name="acctNum" placeholder="Account Number">
                                     </div>
@@ -85,15 +86,15 @@
                                         </select>
                                     </div>
                                     <div class="form-items-group">
-                                        <input type="number" class="form-item" id="acctName" name="reAcctNum" placeholder="Receiver Account Number">
+                                        <input type="number" class="form-item" onchange="getAccountDetails()" name="reAcctNum" placeholder="Receiver Account Number">
                                     </div>
                                     <div class="form-items-group">
-                                        <input type="text" class="form-item" id="acctName" name="reAcctNam" placeholder="Receiver Account Name">
+                                        <input type="text" class="form-item" name="reAcctNam" placeholder="Receiver Account Name">
                                     </div>
                                     <div class="form-items-group">
-                                        <input type="number" class="form-item" id="bal" name="amount" value="Amount" placeholder="Amount">
+                                        <input type="number" class="form-item" name="amount"  placeholder="Amount">
                                     </div>
-                                    <input type="button" class="btn-default" onclick="" value="Transfer">
+                                    <input type="button" id="transferButton" class="btn-default" disabled onclick="transferFunds()" value="Transfer">
                                 </form>
                             </div>
                         </div>
@@ -115,7 +116,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-4"></div>
-                                        <div onclick="hideerrMessModal()" class="col-4 ct-align pd-default col-danger shadow">
+                                        <div onclick="hideerrMessModal('usTransfer')" class="col-4 ct-align pd-default col-danger shadow">
                                             <label>Close</label>
                                         </div>
                                         <div class="col-4"></div>
@@ -129,5 +130,6 @@
             </div>
        </div>
         <script src="../../js/index.js"></script>
+        <script src="../../js/user/transferFund.js"></script>
     </body>
 </html>
