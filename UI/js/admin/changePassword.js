@@ -15,7 +15,7 @@ let changePassword = () => {
         "Authorization": `Bearer ${user.data.token}`,
       },
     };
-  const url2 = `http://localhost:3000/api/v1/admin/${user.data.id}/changePassword`;
+  const url2 = `https://mighty-retreat-71326.herokuapp.com/api/v1/admin/${user.data.id}/changePassword`;
   fetch(url2, fetchData2)
   .then((res) => res.json())
   .then(function(data) {

@@ -56,31 +56,30 @@
                     <div class="panel-lg">
                         <div class="container bgrd-gray">
                             <div class="row">
-                                <div class="col-12 lf-align pd-default bgrd-primary col-default">
-                                    <label>Manage Accounts</label>
-                                </div>
-                                <div class="row">
-                                  <div class="col-12 lt-align">
-                                    <label class="form-item col-primary">Filters</label>
-                                  </div>
+                            <div class="col-12 lf-align pd-default bgrd-primary col-default">
+                                <label>Manage Accounts</label>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 lt-align">
+                                <label class="form-item col-primary">Filters</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-2 pd-default col-primary">
-                                <select class="form-item">
+                                <select id="statusFilter" class="form-item">
                                     <option value="all">All</option>
                                     <option value="active">Active</option>
                                     <option value="dormant">Dormant</option>
                                 </select>
                                 </div>
                                 <div class="col-4 pd-default col-primary">
-                                    <input type="email" class="form-item col-7 lf-align" placeholder="Owner Email">
+                                    <input type="email" id="emailFilter" class="form-item col-7 lf-align" placeholder="Owner Email">
                                 </div>
                                 <div class="col-4 lf-align pd-default col-primary">
-                                    <input type="number" class="form-item lf-align" placeholder="Account Number">
+                                    <input type="number" id="accountNumberFilter" class="form-item lf-align" placeholder="Account Number">
                                 </div>
                                 <div class="col-2 pd-default col-primary">
-                                    <input type="button" class="form-item bgrd-primary col-default pointer" value="Apply">
+                                    <input type="button" id="applyFilters"class="form-item bgrd-primary col-default pointer" onclick="getAccounts()" value="Apply">
                                 </div>
                             </div>
                         </div>

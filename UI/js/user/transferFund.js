@@ -8,7 +8,7 @@ let getAccountDetails = () =>  {
         "Authorization": `Bearer ${user.data.token}`
       },
     }
-    const url2 = `http://localhost:3000/api/v1/user/${user.data.id}/accounts/${form[2].value}`;
+    const url2 = `https://mighty-retreat-71326.herokuapp.com/api/v1/user/${user.data.id}/accounts/${form[2].value}`;
     fetch(url2, fetchData2)
     .then((res) => res.json())
     .then(function(data) {
@@ -62,7 +62,7 @@ let getAccountDetails = () =>  {
       },
     }
     console.log(form[0].value);
-    const url2 = `http://localhost:3000/api/v1/user/${user.data.id}/transactions/${form[0].value}/transfer`;
+    const url2 = `https://mighty-retreat-71326.herokuapp.com/api/v1/user/${user.data.id}/transactions/${form[0].value}/transfer`;
     fetch(url2, fetchData2)
     .then((res) => res.json())
     .then(function(data) {

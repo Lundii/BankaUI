@@ -12,7 +12,7 @@ const populate = () => {
 
 const createBankAccount = () => {
   const user = JSON.parse(localStorage.getItem('ClientUser'));
-  const url = `http://localhost:3000/api/v1/user/${user.data.id}/accounts`;
+  const url = `https://mighty-retreat-71326.herokuapp.com/api/v1/user/${user.data.id}/accounts`;
   const form = document.querySelector('#createNewAccount').elements;
   const data = {
     type: form[3].value,
@@ -39,6 +39,9 @@ const createBankAccount = () => {
       setTimeout(() => {
         window.location.href = '../../pages/signup.html'
       }, 2000)
+    }
+    else if (data.status === 403) {
+      showErrMessModal('ctaccount', 'Message', data.message);
     }
     else {
       let errorDiv = document.querySelector('#createAcctErrors');
