@@ -170,3 +170,13 @@ function hideerrMessModal(container){
   document.querySelector(`#${container}`).style.opacity =  "1";
   document.querySelector(`#${container}`).style.pointerEvents =  "all";
 }
+
+function preview(input) {
+  if( input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      document.querySelector('#pass').src = e.target.result;
+    }
+    reader.readAsDataURL(input.files[0]);
+  }
+}
