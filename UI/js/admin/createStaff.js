@@ -16,7 +16,7 @@ const createStaff = () => {
       "Authorization": `Bearer ${user.data.token}`
     },
     }
-  const url2 = `http://localhost:3000/api/v1/admin/${user.data.id}/users`;
+  const url2 = `https://mighty-retreat-71326.herokuapp.com/api/v1/admin/${user.data.id}/users`;
   fetch(url2, fetchData2)
   .then((res) => res.json())
   .then(function(data) {

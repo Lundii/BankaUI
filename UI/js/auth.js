@@ -1,5 +1,5 @@
 let signup = () => {
-  const url = 'http://localhost:3000/api/v1/auth/signup';
+  const url = 'https://mighty-retreat-71326.herokuapp.com/api/v1/auth/signup';
   document.querySelector('#loader').style.display = 'block';
   const form = document.querySelector('#signupForm').elements;
   const data = {
@@ -47,7 +47,7 @@ let signup = () => {
 }
 
 let signin = () => {
-  const url = 'http://localhost:3000/api/v1/auth/signin'
+  const url = 'https://mighty-retreat-71326.herokuapp.com/api/v1/auth/signin'
   const form = document.querySelector('#loginForm').elements;
   document.querySelector('#loader').style.display = 'block';
   const data = {
@@ -118,6 +118,6 @@ let signin = () => {
 }
 
 let passwordreset = ()=>  {
-  window.location.href = `http://localhost:3000/api/v1/passwordreset`;
+  window.location.href = `https://mighty-retreat-71326.herokuapp.com/api/v1/passwordreset`;
 }
 
