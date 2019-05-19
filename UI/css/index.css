@@ -21,30 +21,28 @@ div.homeImage1 {
     background-size: cover; 
     background-repeat: no-repeat; 
     background-position: center;
+    height: 300px;
  }
  div.homeImage2 {
      background-image: url('../../public/images/transfer.jpg'); 
      background-size: cover; 
      background-repeat: no-repeat; 
      background-position: center;
+     height: 300px;
   }
   div.homeImage3 {
       background-image: url('../../public/images/withdrawmoney.jpg'); 
       background-size: cover; 
       background-repeat: no-repeat; 
       background-position: center;
+      height: 300px;
    }
-   div.homeImage4 {
-       background-image: url('../../public/images/deposit.jpg'); 
-       background-size: cover; 
-       background-repeat: no-repeat; 
-       background-position: center;
-    }
 div.image2 {
     background-image: url('../../public/images/image4.jpg'); 
     background-size: cover; 
     background-repeat: no-repeat; 
     background-position: center;
+    height: 80vh;
  }
 div.passport {
     background-image: url('../../public/images/passport.jpg');
@@ -136,6 +134,33 @@ a:active {
 }
 .btn-danger {
     background-color:red
+}
+.footer {
+    min-height: 200px;
+    background-color: rgb(51, 49, 49);
+    margin-top: 30px;
+}
+.statcard {
+    margin: 65px 0;
+}
+.statcard > div {
+    height: 350px;
+    margin: 30px 0;
+}
+.stat {
+    color: white;
+    font-size: 30px;
+}
+.comcard {
+    height: 700px;
+    margin: 30px 0;
+}
+.comment {
+    min-height: 200px;
+    padding-top: 40px;
+}
+.circle {
+    border-radius: 50%;
 }
 .row::after {
     content: "";
@@ -451,6 +476,9 @@ form {
   }
   .pd-lg {
       padding: 20px;
+  }
+  .pd-llg {
+      padding: 40px;
   }
   .center {
       text-align: center;
