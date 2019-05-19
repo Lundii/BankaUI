@@ -1,5 +1,6 @@
 
   let buyAirtime = () => {
+    document.querySelector('#loader').style.display = 'block';
     const user = JSON.parse(localStorage.getItem('ClientUser'));
     const form = document.querySelector('#airtimeForm').elements;
     const data = {
@@ -16,10 +17,11 @@
       },
     }
     console.log(form[0].value);
-    const url2 = `https://mighty-retreat-71326.herokuapp.com/api/v1/user/${user.data.id}/transactions/${form[0].value}/airtime`;
+    const url2 = `http://localhost:3000/api/v1/user/${user.data.id}/transactions/${form[0].value}/airtime`;
     fetch(url2, fetchData2)
     .then((res) => res.json())
     .then(function(data) {
+      document.querySelector('#loader').style.display = 'none';
       if (data.status === 200 ) {
         if (data.message) {
         showErrMessModal('userAirtime', 'Message', data.message);

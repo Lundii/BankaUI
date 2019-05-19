@@ -1,5 +1,6 @@
 let signup = () => {
-  const url = 'https://mighty-retreat-71326.herokuapp.com/api/v1/auth/signup'
+  const url = 'http://localhost:3000/api/v1/auth/signup';
+  document.querySelector('#loader').style.display = 'block';
   const form = document.querySelector('#signupForm').elements;
   const data = {
     firstName: form[0].value,
@@ -19,6 +20,7 @@ let signup = () => {
   fetch(url, fetchData)
   .then((res) => res.json())
   .then(function(data) {
+    document.querySelector('#loader').style.display = 'none';
     localStorage.setItem('ClientUser', JSON.stringify(data));
       if (data.status === 200) {
       window.location.href = '../pages/userPages/createNewAccount.html';
@@ -45,8 +47,9 @@ let signup = () => {
 }
 
 let signin = () => {
-  const url = 'https://mighty-retreat-71326.herokuapp.com/api/v1/auth/signin'
+  const url = 'http://localhost:3000/api/v1/auth/signin'
   const form = document.querySelector('#loginForm').elements;
+  document.querySelector('#loader').style.display = 'block';
   const data = {
     email: form[0].value,
     password: form[1].value,
@@ -61,6 +64,7 @@ let signin = () => {
   fetch(url, fetchData)
   .then((res) => res.json())
   .then(function(data) {
+    document.querySelector('#loader').style.display = 'none';
       if (data.status === 200) {
         switch (data.data.type) {
           case 'client': {
@@ -114,6 +118,6 @@ let signin = () => {
 }
 
 let passwordreset = ()=>  {
-  window.location.href = `https://mighty-retreat-71326.herokuapp.com/api/v1/passwordreset`;
+  window.location.href = `http://localhost:3000/api/v1/passwordreset`;
 }
 

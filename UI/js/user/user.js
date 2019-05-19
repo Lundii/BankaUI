@@ -1,4 +1,5 @@
 const createSummary = () => {
+  document.querySelector('#loader').style.display = 'block';
   const user = JSON.parse(localStorage.getItem('ClientUser'));
   const fetchData2 = {
     method: 'GET',
@@ -7,10 +8,11 @@ const createSummary = () => {
       "Authorization": `Bearer ${user.data.token}`
     },
   }
-const url2 = `https://mighty-retreat-71326.herokuapp.com/api/v1/user/${user.data.id}/accounts`;
+const url2 = `http://localhost:3000/api/v1/user/${user.data.id}/accounts`;
 fetch(url2, fetchData2)
 .then((res) => res.json())
 .then(function(data) {
+  document.querySelector('#loader').style.display = 'none';
   if (data.status === 200 && data.data.length) {
     localStorage.setItem('accountSummary', JSON.stringify(data));
     const accountSummary = JSON.parse(localStorage.getItem('accountSummary'));
@@ -81,6 +83,7 @@ fetch(url2, fetchData2)
 }
 
 const transactionDetails = (accountDe) => {
+  document.querySelector('#loader').style.display = 'block';
   const user = JSON.parse(localStorage.getItem('ClientUser'));
   const fetchData2 = {
     method: 'GET',
@@ -89,10 +92,11 @@ const transactionDetails = (accountDe) => {
       "Authorization": `Bearer ${user.data.token}`
     },
   }
-const url2 = `https://mighty-retreat-71326.herokuapp.com/api/v1/user/${user.data.id}/accounts/${accountDe.accountnumber}/transactions`;
+const url2 = `http://localhost:3000/api/v1/user/${user.data.id}/accounts/${accountDe.accountnumber}/transactions`;
 fetch(url2, fetchData2)
 .then((res) => res.json())
 .then(function(data) {
+  document.querySelector('#loader').style.display = 'none';
   if (data.status === 200  ) {
     document.querySelector('#accountHistory').style.display = 'block';
     document.querySelector('#accountSummary').style.display = 'none';

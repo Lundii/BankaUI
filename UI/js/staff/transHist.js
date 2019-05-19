@@ -1,4 +1,5 @@
 const transactionDetails = () => {
+  document.querySelector('#loader').style.display = 'block';
     const user = JSON.parse(localStorage.getItem('StaffUser'));
     const accountDe = JSON.parse(localStorage.getItem('clientAccountDetails'));
     const fetchData2 = {
@@ -8,10 +9,11 @@ const transactionDetails = () => {
         "Authorization": `Bearer ${user.data.token}`
       },
     }
-  const url2 = `https://mighty-retreat-71326.herokuapp.com/api/v1/staff/${user.data.id}/accounts/${accountDe.accountnumber}/transactions`;
+  const url2 = `http://localhost:3000/api/v1/staff/${user.data.id}/accounts/${accountDe.accountnumber}/transactions`;
   fetch(url2, fetchData2)
   .then((res) => res.json())
   .then(function(data) {
+    document.querySelector('#loader').style.display = 'none';
     if (data.status === 200  ) {
       localStorage.setItem('transactionHistory', JSON.stringify(data));
       const transactionHistory = JSON.parse(localStorage.getItem('transactionHistory'));
@@ -19,6 +21,7 @@ const transactionDetails = () => {
         transactionHistory.data.forEach((account) => {
           const li = document.createElement('li');
           li.addEventListener('click', () => {showModal2('transactionHistory', account)});
+          document.querySelector("#transListName").innerHTML = `${accountDe.firstname} ${accountDe.lastname}`;
           document.querySelector("#transListNum").innerHTML = account.accountnumber;
           document.querySelector("#transListBal").innerHTML = `&#x20A6 ${accountDe.balance}`;
           const div1 = document.createElement('div');

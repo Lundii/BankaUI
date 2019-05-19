@@ -1,48 +1,50 @@
 const getAccounts = () => {
-    const user = JSON.parse(localStorage.getItem('AdminUser'));
-    const fetchData2 = {
-      method: 'GET',
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${user.data.token}`
-      },
+  document.querySelector('#loader').style.display = 'block';
+  const user = JSON.parse(localStorage.getItem('AdminUser'));
+  const fetchData2 = {
+    method: 'GET',
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${user.data.token}`
+    },
+  }
+  let url = `http://localhost:3000/api/v1/admin/${user.data.id}/accounts`;
+
+  let accountListDiv = document.querySelector('#acctList');
+  const accountList = accountListDiv.childNodes;
+  const length = accountList.length;
+  for (let i = 0; i < length; i++) {
+    accountListDiv.removeChild(accountList[0]);
+  }
+  const statusFilter = document.getElementById('statusFilter').value;
+  const emailFilter = document.getElementById('emailFilter').value;
+  const numberFilter = document.getElementById('accountNumberFilter').value;
+  if (statusFilter !== 'all' || emailFilter || numberFilter ) {
+    url = url.concat('?')
+  }
+  if (statusFilter !== 'all') {
+    url = url.concat(`status=${statusFilter}`);
+    if (emailFilter) {
+      url = url.concat(`&email=${emailFilter}`);
     }
-    let url = `https://mighty-retreat-71326.herokuapp.com/api/v1/admin/${user.data.id}/accounts`;
-  
-    let accountListDiv = document.querySelector('#acctList');
-    const accountList = accountListDiv.childNodes;
-    const length = accountList.length;
-    for (let i = 0; i < length; i++) {
-      accountListDiv.removeChild(accountList[0]);
+    if (numberFilter) {
+      url = url.concat(`&accountNumber=${numberFilter}`);
     }
-    const statusFilter = document.getElementById('statusFilter').value;
-    const emailFilter = document.getElementById('emailFilter').value;
-    const numberFilter = document.getElementById('accountNumberFilter').value;
-    if (statusFilter !== 'all' || emailFilter || numberFilter ) {
-      url = url.concat('?')
     }
-    if (statusFilter !== 'all') {
-      url = url.concat(`status=${statusFilter}`);
-      if (emailFilter) {
-        url = url.concat(`&email=${emailFilter}`);
-      }
-      if (numberFilter) {
-        url = url.concat(`&accountNumber=${numberFilter}`);
-      }
-     }
-     else if (statusFilter === 'all' && emailFilter) {
-      url = url.concat(`email=${emailFilter}`);
-      if (numberFilter) {
-        url = url.concat(`&accountNumber=${numberFilter}`);
-      }
-     }
-     else if (statusFilter === 'all' && numberFilter) {
-       url = url.concat(`accountNumber=${numberFilter}`);
-     }
+    else if (statusFilter === 'all' && emailFilter) {
+    url = url.concat(`email=${emailFilter}`);
+    if (numberFilter) {
+      url = url.concat(`&accountNumber=${numberFilter}`);
+    }
+    }
+    else if (statusFilter === 'all' && numberFilter) {
+      url = url.concat(`accountNumber=${numberFilter}`);
+    }
   fetch(url, fetchData2)
   .then((res) => res.json())
   .then(function(data) {
     if (data.status === 200 ) {
+      document.querySelector('#loader').style.display = 'none';
       localStorage.setItem('allAccounts', JSON.stringify(data));
       const allAccounts = JSON.parse(localStorage.getItem('allAccounts'));
     
@@ -134,6 +136,7 @@ const enableAccountFields = ()  => {
 }
 
 const editUser = () => {
+  document.querySelector('#loader').style.display = 'block';
   const accountDetails = document.querySelector('#accountDetailsForm');
   if (accountDetails[5].value === 'Edit') {
     enableAccountFields();
@@ -154,10 +157,11 @@ const editUser = () => {
       "Authorization": `Bearer ${user.data.token}`
     },
   }
-const url = `https://mighty-retreat-71326.herokuapp.com/api/v1/admin/${user.data.id}/users`;
+const url = `http://localhost:3000/api/v1/admin/${user.data.id}/users`;
 fetch(url, fetchData)
 .then((res) => res.json())
 .then(function(data) {
+  document.querySelector('#loader').style.display = 'none';
   accountDetails[0].disabled = true;
   accountDetails[1].disabled = true;
   accountDetails[4].disabled = true;
@@ -197,6 +201,7 @@ fetch(url, fetchData)
 }
 
 const deleteAccount = (callback) => {
+  document.querySelector('#loader').style.display = 'block';
   const user = JSON.parse(localStorage.getItem('AdminUser'));
   const accountNumber = JSON.parse(localStorage.getItem('clientAccountDetails')).accountnumber;
   const fetchData2 = {
@@ -206,10 +211,11 @@ const deleteAccount = (callback) => {
       "Authorization": `Bearer ${user.data.token}`
     },
   }
-const url2 = `https://mighty-retreat-71326.herokuapp.com/api/v1/admin/${user.data.id}/accounts/${accountNumber}`;
+const url2 = `http://localhost:3000/api/v1/admin/${user.data.id}/accounts/${accountNumber}`;
 fetch(url2, fetchData2)
 .then((res) => res.json())
 .then(function(data) {
+  document.querySelector('#loader').style.display = 'none';
   if (data.status === 200 ) {
     callback();
   }
@@ -221,6 +227,7 @@ fetch(url2, fetchData2)
 
 
 const activate_deactivateAccount = (accountNumber, status, callback) => {
+  document.querySelector('#loader').style.display = 'block';
   const user = JSON.parse(localStorage.getItem('AdminUser'));
   const body2 = {
     status
@@ -233,10 +240,11 @@ const activate_deactivateAccount = (accountNumber, status, callback) => {
       "Authorization": `Bearer ${user.data.token}`
     },
   }
-const url2 = `https://mighty-retreat-71326.herokuapp.com/api/v1/admin/${user.data.id}/account/${accountNumber}`;
+const url2 = `http://localhost:3000/api/v1/admin/${user.data.id}/account/${accountNumber}`;
 fetch(url2, fetchData2)
 .then((res) => res.json())
 .then(function(data) {
+  document.querySelector('#loader').style.display = 'none';
   if (data.status === 200 ) {
     callback();
   }

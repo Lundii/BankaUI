@@ -1,13 +1,14 @@
 const getStaffs = () => {
-    const user = JSON.parse(localStorage.getItem('AdminUser'));
-    const fetchData2 = {
-      method: 'GET',
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${user.data.token}`
-      },
-    }
-  let url = `https://mighty-retreat-71326.herokuapp.com/api/v1/admin/${user.data.id}/users?type=admin`;
+  document.querySelector('#loader').style.display = 'block';
+  const user = JSON.parse(localStorage.getItem('AdminUser'));
+  const fetchData2 = {
+    method: 'GET',
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${user.data.token}`
+    },
+  }
+  let url = `http://localhost:3000/api/v1/admin/${user.data.id}/users?type=admin`;
 
   let accountListDiv = document.querySelector('#adminList');
   const accountList = accountListDiv.childNodes;
@@ -26,6 +27,7 @@ const getStaffs = () => {
   fetch(url, fetchData2)
   .then((res) => res.json())
   .then(function(data) {
+    document.querySelector('#loader').style.display = 'none';
     if (data.status === 200 ) {
       localStorage.setItem('admins', JSON.stringify(data));
       const admins = JSON.parse(localStorage.getItem('admins'));
@@ -110,6 +112,7 @@ const enableAdminFields = ()  => {
 }
 
 const editUser = () => {
+  document.querySelector('#loader').style.display = 'block';
   const adminDetails = document.querySelector('#adminDetailsForm');
   if (adminDetails[5].value === 'Edit') {
     enableAdminFields();
@@ -130,10 +133,11 @@ const editUser = () => {
       "Authorization": `Bearer ${user.data.token}`
     },
   }
-const url = `https://mighty-retreat-71326.herokuapp.com/api/v1/admin/${user.data.id}/users`;
+const url = `http://localhost:3000/api/v1/admin/${user.data.id}/users`;
 fetch(url, fetchData)
 .then((res) => res.json())
 .then(function(data) {
+  document.querySelector('#loader').style.display = 'none';
   adminDetails[0].disabled = true;
   adminDetails[1].disabled = true;
   adminDetails[5].value = "Edit";
@@ -172,6 +176,7 @@ fetch(url, fetchData)
 }
 
 const deleteAccount = (callback) => {
+  document.querySelector('#loader').style.display = 'block';
   const user = JSON.parse(localStorage.getItem('AdminUser'));
   const staffemail = localStorage.getItem('staffemailDetails');
   const body = {
@@ -185,10 +190,11 @@ const deleteAccount = (callback) => {
       "Authorization": `Bearer ${user.data.token}`
     },
   }
-const url2 = `https://mighty-retreat-71326.herokuapp.com/api/v1/admin/${user.data.id}/users`;
+const url2 = `http://localhost:3000/api/v1/admin/${user.data.id}/users`;
 fetch(url2, fetchData2)
 .then((res) => res.json())
 .then(function(data) {
+  document.querySelector('#loader').style.display = 'none';
   if (data.status === 200 ) {
     document.location.reload(); 
     callback();

@@ -7,6 +7,7 @@ let disable = () => {
 
 
 let getAccountDetails = ()=>  {
+  document.querySelector('#loader').style.display = 'block';
     const user = JSON.parse(localStorage.getItem('StaffUser'));
     const form = document.querySelector('#creditForm').elements;
     const fetchData2 = {
@@ -17,10 +18,11 @@ let getAccountDetails = ()=>  {
       },
     }
     console.log(form[0].value);
-    const url2 = `https://mighty-retreat-71326.herokuapp.com/api/v1/staff/${user.data.id}/accounts/${form[0].value}`;
+    const url2 = `http://localhost:3000/api/v1/staff/${user.data.id}/accounts/${form[0].value}`;
     fetch(url2, fetchData2)
     .then((res) => res.json())
     .then(function(data) {
+      document.querySelector('#loader').style.display = 'none';
       if (data.status === 200 ) {
         form[1].value = `${data.data[0].firstname} ${data.data[0].lastname}`;
         form[2].value = `${data.data[0].balance}`;
@@ -57,6 +59,7 @@ let getAccountDetails = ()=>  {
   }
 
   let creditAccount = () => {
+    document.querySelector('#loader').style.display = 'block';
     const user = JSON.parse(localStorage.getItem('StaffUser'));
     const form = document.querySelector('#creditForm').elements;
     const data = {
@@ -70,11 +73,11 @@ let getAccountDetails = ()=>  {
         "Authorization": `Bearer ${user.data.token}`
       },
     }
-    console.log(form[0].value);
-    const url2 = `https://mighty-retreat-71326.herokuapp.com/api/v1/staff/${user.data.id}/transactions/${form[0].value}/credit`;
+    const url2 = `http://localhost:3000/api/v1/staff/${user.data.id}/transactions/${form[0].value}/credit`;
     fetch(url2, fetchData2)
     .then((res) => res.json())
     .then(function(data) {
+      document.querySelector('#loader').style.display = 'none';
       if (data.status === 200 ) {
         if (data.message) {
         showErrMessModal('sfCredit', 'Message', data.message);

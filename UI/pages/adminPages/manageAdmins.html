@@ -7,7 +7,7 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </head>
     <body class="image1">
-            <div class="container-nav relative bgrd-primary z-md">
+            <div class="container-nav sticky bgrd-primary z-md">
                     <div class="container-nav no-pad">
                         <div class="row nav-cont dash-nav">
                             <div class="col-2 pd-default">
@@ -39,6 +39,8 @@
                             </div>
                         </div>
                     </div>
+                <div id="loader"class="relative hidden">
+                    <div class="loader"></div>
                 </div>
             </div>
             <div class="container">
@@ -142,7 +144,7 @@
                                     <label id='modalMessage'>Are you sure you want to delete this account</label>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row modalRow">
                                 <div onclick="hideModal('manageAdmins', 'YES')" class="col-6 lf-align pd-default col-primary shadow">
                                     <label class="col-primary">YES</label>
                                 </div>

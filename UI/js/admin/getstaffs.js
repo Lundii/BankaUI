@@ -1,4 +1,5 @@
 const getStaffs = () => {
+  document.querySelector('#loader').style.display = 'block';
     const user = JSON.parse(localStorage.getItem('AdminUser'));
     const fetchData2 = {
       method: 'GET',
@@ -7,7 +8,7 @@ const getStaffs = () => {
         "Authorization": `Bearer ${user.data.token}`
       },
     }
-  let url = `https://mighty-retreat-71326.herokuapp.com/api/v1/admin/${user.data.id}/users?type=staff`;
+  let url = `http://localhost:3000/api/v1/admin/${user.data.id}/users?type=staff`;
 
   let accountListDiv = document.querySelector('#staffList');
   const accountList = accountListDiv.childNodes;
@@ -26,6 +27,7 @@ const getStaffs = () => {
   fetch(url, fetchData2)
   .then((res) => res.json())
   .then(function(data) {
+    document.querySelector('#loader').style.display = 'none';
     if (data.status === 200 ) {
       localStorage.setItem('staffs', JSON.stringify(data));
       const staffs = JSON.parse(localStorage.getItem('staffs'));
@@ -111,6 +113,7 @@ const enableStaffFields = ()  => {
 
 
 const editStaff_admin = () => {
+  document.querySelector('#loader').style.display = 'block';
   const staffDetails = document.querySelector('#staffDetailsForm');
   if (staffDetails[5].value === 'Edit') {
     enableStaffFields();
@@ -131,10 +134,11 @@ const editStaff_admin = () => {
       "Authorization": `Bearer ${user.data.token}`
     },
   }
-const url = `https://mighty-retreat-71326.herokuapp.com/api/v1/admin/${user.data.id}/users`;
+const url = `http://localhost:3000/api/v1/admin/${user.data.id}/users`;
 fetch(url, fetchData)
 .then((res) => res.json())
 .then(function(data) {
+  document.querySelector('#loader').style.display = 'none';
   staffDetails[0].disabled = true;
   staffDetails[1].disabled = true;
   staffDetails[5].value = "Edit";
@@ -172,6 +176,7 @@ fetch(url, fetchData)
 })
 }
 const deleteAccount = (callback) => {
+  document.querySelector('#loader').style.display = 'block';
   const user = JSON.parse(localStorage.getItem('AdminUser'));
   const staffemail = localStorage.getItem('staffemailDetails');
   const body = {
@@ -185,10 +190,11 @@ const deleteAccount = (callback) => {
       "Authorization": `Bearer ${user.data.token}`
     },
   }
-const url2 = `https://mighty-retreat-71326.herokuapp.com/api/v1/admin/${user.data.id}/users`;
+const url2 = `http://localhost:3000/api/v1/admin/${user.data.id}/users`;
 fetch(url2, fetchData2)
 .then((res) => res.json())
 .then(function(data) {
+  document.querySelector('#loader').style.display = 'none';
   if (data.status === 200 ) {
     callback();
   }

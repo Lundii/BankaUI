@@ -1,4 +1,5 @@
 const populate = () => {
+  document.querySelector('#loader').style.display = 'block';
     const form = document.querySelector('#createNewAccount').elements;
     const user = JSON.parse(localStorage.getItem('ClientUser'));
 
@@ -12,7 +13,7 @@ const populate = () => {
 
 const createBankAccount = () => {
   const user = JSON.parse(localStorage.getItem('ClientUser'));
-  const url = `https://mighty-retreat-71326.herokuapp.com/api/v1/user/${user.data.id}/accounts`;
+  const url = `http://localhost:3000/api/v1/user/${user.data.id}/accounts`;
   const form = document.querySelector('#createNewAccount').elements;
   const data = {
     type: form[3].value,
@@ -28,6 +29,7 @@ const createBankAccount = () => {
   fetch(url, fetchData)
   .then((res) => res.json())
   .then(function(data) {
+    document.querySelector('#loader').style.display = 'none';
     if (data.status === 200) {
       window.location.href = '../userPages/dashboard.html';
       if (data.message){
