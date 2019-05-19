@@ -8,7 +8,7 @@ const getStaffs = () => {
         "Authorization": `Bearer ${user.data.token}`
       },
     }
-  let url = `http://localhost:3000/api/v1/admin/${user.data.id}/users?type=staff`;
+  let url = `https://mighty-retreat-71326.herokuapp.com/api/v1/admin/${user.data.id}/users?type=staff`;
 
   let accountListDiv = document.querySelector('#staffList');
   const accountList = accountListDiv.childNodes;
@@ -134,7 +134,7 @@ const editStaff_admin = () => {
       "Authorization": `Bearer ${user.data.token}`
     },
   }
-const url = `http://localhost:3000/api/v1/admin/${user.data.id}/users`;
+const url = `https://mighty-retreat-71326.herokuapp.com/api/v1/admin/${user.data.id}/users`;
 fetch(url, fetchData)
 .then((res) => res.json())
 .then(function(data) {
@@ -190,7 +190,7 @@ const deleteAccount = (callback) => {
       "Authorization": `Bearer ${user.data.token}`
     },
   }
-const url2 = `http://localhost:3000/api/v1/admin/${user.data.id}/users`;
+const url2 = `https://mighty-retreat-71326.herokuapp.com/api/v1/admin/${user.data.id}/users`;
 fetch(url2, fetchData2)
 .then((res) => res.json())
 .then(function(data) {

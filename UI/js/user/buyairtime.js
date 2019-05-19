@@ -17,7 +17,7 @@
       },
     }
     console.log(form[0].value);
-    const url2 = `http://localhost:3000/api/v1/user/${user.data.id}/transactions/${form[0].value}/airtime`;
+    const url2 = `https://mighty-retreat-71326.herokuapp.com/api/v1/user/${user.data.id}/transactions/${form[0].value}/airtime`;
     fetch(url2, fetchData2)
     .then((res) => res.json())
     .then(function(data) {
