@@ -103,80 +103,82 @@ function showDrowndown(event, id) {
   event.stopPropagation();
 }
 
-function showModal(container, message, account){
-  document.querySelector("#modal").style.display =  "block";
-  document.querySelector('#modalMessage').innerHTML =  `Are you sure you want to ${message} this account`;
+function showModal(container, message, account) {
+  document.querySelector("#modal").style.display = "block";
+  document.querySelector('#modalMessage').innerHTML = `Are you sure you want to ${message} this account`;
   localStorage.setItem('modalAction', message);
-  document.querySelector(`#${container}`).style.pointerEvents =  "none";
-  document.querySelector(`#${container}`).style.filter = "blur(1px)"; 
+  document.querySelector(`#${container}`).style.pointerEvents = "none";
+  document.querySelector(`#${container}`).style.filter = "blur(1px)";
   if (account.accountnumber) localStorage.setItem('clientAccountDetails', JSON.stringify(account));
-  if(account.type === 'staff') localStorage.setItem('staffemailDetails', account.email);
+  if (account.type === 'staff') localStorage.setItem('staffemailDetails', account.email);
 }
-function hideModal(container, action){
-  if (action === 'YES' ) {
+function hideModal(container, action) {
+  if (action === 'YES') {
     switch (localStorage.getItem('modalAction')) {
       case 'delete':
-      deleteAccount(() => {
+        deleteAccount(() => {
           document.location.reload();
         });
-      break;
-      case 'activate': 
-        activate_deactivateAccount(JSON.parse(localStorage.getItem('clientAccountDetails')).accountnumber, 'active', () => {
-          document.location.reload(); 
-        }) 
         break;
-      case 'deactivate': 
+      case 'activate':
+        activate_deactivateAccount(JSON.parse(localStorage.getItem('clientAccountDetails')).accountnumber, 'active', () => {
+          document.location.reload();
+        })
+        break;
+      case 'deactivate':
         activate_deactivateAccount(JSON.parse(localStorage.getItem('clientAccountDetails')).accountnumber, 'dormant', () => {
-          document.location.reload(); 
-        }) 
+          document.location.reload();
+        })
         break;
     }
   }
   else {
-    document.querySelector("#modal").style.display =  "none";
-    document.querySelector(`#${container}`).style.filter = "blur(0px)"; 
-    document.querySelector(`#${container}`).style.pointerEvents =  "all";
-    document.querySelector(`#${container}`).style.opacity =  "1";
+    document.querySelector("#modal").style.display = "none";
+    document.querySelector(`#${container}`).style.filter = "blur(0px)";
+    document.querySelector(`#${container}`).style.pointerEvents = "all";
+    document.querySelector(`#${container}`).style.opacity = "1";
   }
 }
 
-function showModal2(container, data){
+function showModal2(container, data) {
   document.querySelector('#transAmount').innerHTML = data.amount
   document.querySelector('#transDate').innerHTML = data.createdon
   document.querySelector('#transType').innerHTML = data.type
   document.querySelector('#transNum').innerHTML = `&#x20A6 ${data.accountnumber}`
-  document.querySelector("#modal2").style.display =  "block";
-  document.querySelector(`#${container}`).style.pointerEvents =  "none";
-  document.querySelector(`#${container}`).style.filter = "blur(1px)"; 
+  document.querySelector("#modal2").style.display = "block";
+  document.querySelector(`#${container}`).style.pointerEvents = "none";
+  document.querySelector(`#${container}`).style.filter = "blur(1px)";
 }
-function hideModal2(container){
-  document.querySelector("#modal2").style.display =  "none";
-  document.querySelector(`#${container}`).style.pointerEvents =  "all";
-  document.querySelector(`#${container}`).style.filter = "blur(0px)"; 
-  document.querySelector(`#${container}`).style.opacity =  "1";
+function hideModal2(container) {
+  document.querySelector("#modal2").style.display = "none";
+  document.querySelector(`#${container}`).style.pointerEvents = "all";
+  document.querySelector(`#${container}`).style.filter = "blur(0px)";
+  document.querySelector(`#${container}`).style.opacity = "1";
 }
 
 function showErrMessModal(container, errMess, value) {
   document.querySelector('#errMessModal').style.display = "block";
   document.querySelector('#mess').innerHTML = value;
   document.querySelector('#messHeader').innerHTML = errMess;
-  document.querySelector(`#${container}`).style.pointerEvents =  "none";
-  document.querySelector(`#${container}`).style.filter = "blur(1px)"; 
+  document.querySelector(`#${container}`).style.pointerEvents = "none";
+  document.querySelector(`#${container}`).style.filter = "blur(1px)";
 }
 
-function hideerrMessModal(container){
+function hideerrMessModal(container) {
   document.querySelector('#errMessModal').style.display = "none";
-  document.querySelector(`#${container}`).style.filter = "blur(0px)"; 
-  document.querySelector(`#${container}`).style.opacity =  "1";
-  document.querySelector(`#${container}`).style.pointerEvents =  "all";
+  document.querySelector(`#${container}`).style.filter = "blur(0px)";
+  document.querySelector(`#${container}`).style.opacity = "1";
+  document.querySelector(`#${container}`).style.pointerEvents = "all";
 }
 
 function preview(input) {
-  if( input.files && input.files[0]) {
+  if (input.files && input.files[0]) {
     var reader = new FileReader();
-    reader.onload = function(e) {
+    reader.onload = function (e) {
       document.querySelector('#pass').src = e.target.result;
     }
     reader.readAsDataURL(input.files[0]);
+    uploadPassport(input.files[0]);
+    console.log(input.files[0])
   }
 }
