@@ -18,19 +18,19 @@ let signup = () => {
     },
   }
   fetch(url, fetchData)
-  .then((res) => res.json())
-  .then(function(data) {
-    document.querySelector('#loader').style.display = 'none';
-    localStorage.setItem('ClientUser', JSON.stringify(data));
+    .then((res) => res.json())
+    .then(function (data) {
+      document.querySelector('#loader').style.display = 'none';
+      localStorage.setItem('ClientUser', JSON.stringify(data));
       if (data.status === 200) {
-      window.location.href = '../pages/userPages/createNewAccount.html';
+        window.location.href = '../pages/userPages/createNewAccount.html';
       }
       else {
         let errorDiv = document.querySelector('#errors2');
         const errorNodes = errorDiv.childNodes;
         const length = errorNodes.length;
         for (let i = 0; i < length; i++) {
-            errorDiv.removeChild(errorNodes[0]);
+          errorDiv.removeChild(errorNodes[0]);
         }
         const errors = data.error.split('|  ');
         errors.forEach((error, index) => {
@@ -40,10 +40,10 @@ let signup = () => {
           errorDiv.appendChild(para);
         });
       }
-  })
-  .catch(function(error) {
+    })
+    .catch(function (error) {
       console.log(error)
-  })
+    })
 }
 
 let signin = () => {
@@ -62,9 +62,9 @@ let signin = () => {
     },
   }
   fetch(url, fetchData)
-  .then((res) => res.json())
-  .then(function(data) {
-    document.querySelector('#loader').style.display = 'none';
+    .then((res) => res.json())
+    .then(function (data) {
+      document.querySelector('#loader').style.display = 'none';
       if (data.status === 200) {
         switch (data.data.type) {
           case 'client': {
@@ -74,34 +74,34 @@ let signin = () => {
           case 'staff': {
             if (data.data.isadmin)
               localStorage.setItem('AdminUser', JSON.stringify(data));
-            else 
+            else
               localStorage.setItem('StaffUser', JSON.stringify(data));
             break;
           }
         }
         switch (data.data.type) {
-          case 'client' :
-            if(data.data.createdanaccount === false)
+          case 'client':
+            if (data.data.createdanaccount === false)
               window.location.href = '../pages/userPages/createNewAccount.html';
             else
               window.location.href = '../pages/userPages/dashboard.html';
             break;
 
-          case 'staff' :
+          case 'staff':
             if (data.data.isadmin) {
               window.location.href = '../pages/adminPages/manageUsers.html';
             }
-            else 
+            else
               window.location.href = '../pages/Staff(Cashier) pages/manageUsers.html';
             break;
         }
-      } 
+      }
       else {
         let errorDiv = document.querySelector('#errors');
         const errorNodes = errorDiv.childNodes;
         const length = errorNodes.length;
         for (let i = 0; i < length; i++) {
-            errorDiv.removeChild(errorNodes[0]);
+          errorDiv.removeChild(errorNodes[0]);
         }
         const errors = data.error.split('|  ');
         errors.forEach((error, index) => {
@@ -111,13 +111,13 @@ let signin = () => {
           errorDiv.appendChild(para);
         });
       }
-  })
-  .catch(function(error) {
+    })
+    .catch(function (error) {
       console.log(error)
-  })
+    })
 }
 
-let passwordreset = ()=>  {
+let passwordreset = () => {
   window.location.href = `https://mighty-retreat-71326.herokuapp.com/api/v1/passwordreset`;
 }
 
